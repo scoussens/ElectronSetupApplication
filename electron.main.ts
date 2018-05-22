@@ -2,6 +2,7 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 import { NodePowerShellService } from './electron/nps.service';
+const client = require('electron-connect').client;
 
 let mainWindow: BrowserWindow = null;
 app.setName('Control Center Setup');
@@ -39,5 +40,6 @@ const createWindow = () => {
 app.on('ready', () => {
     if (mainWindow === null) {
         createWindow();
+        client.create(mainWindow);
     }
 })

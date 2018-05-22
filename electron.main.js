@@ -4,6 +4,7 @@ var electron_1 = require("electron");
 var path = require("path");
 var url = require("url");
 var nps_service_1 = require("./electron/nps.service");
+var client = require('electron-connect').client;
 var mainWindow = null;
 electron_1.app.setName('Control Center Setup');
 var createWindow = function () {
@@ -34,5 +35,6 @@ var createWindow = function () {
 electron_1.app.on('ready', function () {
     if (mainWindow === null) {
         createWindow();
+        client.create(mainWindow);
     }
 });
