@@ -17,4 +17,8 @@ export class HomeComponent implements OnInit {
       .listScripts()
       .then(result => this.scripts = result);
   }
+
+  onTabSelect(e) {
+    console.log(e);
+  }
 }
