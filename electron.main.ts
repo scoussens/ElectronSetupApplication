@@ -4,11 +4,12 @@ import * as url from 'url';
 import { NodePowerShellService } from './electron/nps.service';
 const client = require('electron-connect').client;
 
-let mainWindow: BrowserWindow = null;
+let win: BrowserWindow = null;
+let serve = process.argv.slice(1).some(val => val === '--serve');
 app.setName('Control Center Setup');
 
 const createWindow = () => {
-    mainWindow = new BrowserWindow({
+    win = new BrowserWindow({
         width: 800,
         height: 600,
         autoHideMenuBar: true,
@@ -19,27 +20,32 @@ const createWindow = () => {
         title: `${app.getName()} v0.0.0`
     });
 
-    // Tell Electron where to load the entry point from
-    mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'dist/index.html'),
-        protocol: 'file:',
-        slashes: true
-    }));
+    if (serve) {
+        require('electron-reload')(__dirname, {});
+        win.loadURL('http://localhost:4200');
+    } else {
+        // Tell Electron where to load the entry point from
+        win.loadURL(url.format({
+            pathname: path.join(__dirname, 'dist/index.html'),
+            protocol: 'file:',
+            slashes: true
+        }));
+    }
 
     // Open the DevTools.
-    mainWindow.webContents.openDevTools();
+    win.webContents.openDevTools();
 
     let powershell = new NodePowerShellService(ipcMain);
 
-    mainWindow.on('closed', () => {
-        mainWindow = null;
+    win.on('closed', () => {
+        win = null;
         console.log("Main windows closed, application quit.");
     })
 }
 
 app.on('ready', () => {
-    if (mainWindow === null) {
+    if (win === null) {
         createWindow();
-        client.create(mainWindow);
+        client.create(win);
     }
 })

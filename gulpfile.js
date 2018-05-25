@@ -1,11 +1,22 @@
 'use strict';
 
 var gulp = require('gulp');
-var exec = require('child_process').exec;
+var { spawn, exec } = require('child_process');
 var electron = require('electron-connect').server.create();
+let waitOn = require('wait-on');
 
 gulp.task('ng-build', (cb) => {
-  exec('ng build', { maxBuffer: 1024*1024 }, (err, stdout, stderr) => {
+  let ngBuild = spawn('npm.cmd', ['run', 'ng:build']);
+  ngBuild.stdout.on('data', (data) => console.log(data.toString()));
+  ngBuild.stderr.on('data', (data) => console.log(data.toString()));
+
+  waitOn({
+    resources: [
+      'dist/index.html'
+    ],
+    delay: 15000,
+    log: true
+  }, (err) => {
     cb(err);
   })
 })
