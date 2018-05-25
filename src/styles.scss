@@ -9,7 +9,8 @@ body {
   height: 100%;
 }
 
-kendo-tabstrip p {
-  margin: 0;
-  padding: 8px;
+.nav .navbar-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }

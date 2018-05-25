@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./welcome.component.scss']
 })
 export class WelcomeComponent implements OnInit {
+  linkNext = '/license';
+  linkPrev = null;
 
   constructor() { }
 

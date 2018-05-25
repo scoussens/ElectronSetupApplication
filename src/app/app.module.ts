@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxElectronModule } from 'ngx-electron';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './component/home/home.component';
 import { AppRoutingModule } from './modules/routing.module';
 import { PowershellService } from './services/powershell.service';
 import { GridModule } from '@progress/kendo-angular-grid';
@@ -14,17 +13,18 @@ import { LicenseComponent } from './component/license/license.component';
 import { ConfigurationComponent } from './component/configuration/configuration.component';
 import { ConfirmationComponent } from './component/confirmation/confirmation.component';
 import { InstallationComponent } from './component/installation/installation.component';
+import { NavBottomComponent } from './component/nav-bottom/nav-bottom.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     NavComponent,
     WelcomeComponent,
     LicenseComponent,
     ConfigurationComponent,
     ConfirmationComponent,
-    InstallationComponent
+    InstallationComponent,
+    NavBottomComponent
   ],
   imports: [
     BrowserAnimationsModule,
