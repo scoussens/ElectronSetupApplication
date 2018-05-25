@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { WelcomeComponent } from '../component/welcome/welcome.component';
-import { LicenseComponent } from '../component/license/license.component';
 import { ConfigurationComponent } from '../component/configuration/configuration.component';
 import { ConfirmationComponent } from '../component/confirmation/confirmation.component';
 import { InstallationComponent } from '../component/installation/installation.component';
+import { LicenseComponent } from '../component/license/license.component';
+import { WelcomeComponent } from '../component/welcome/welcome.component';
+import { CompleteComponent } from './../component/complete/complete.component';
 
 const routes: Routes = [
     {
@@ -30,6 +31,10 @@ const routes: Routes = [
     {
         path: 'installation',
         component: InstallationComponent
+    },
+    {
+        path: 'complete',
+        component: CompleteComponent
     }
 ];
 

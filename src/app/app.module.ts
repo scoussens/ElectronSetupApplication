@@ -14,6 +14,7 @@ import { ConfigurationComponent } from './component/configuration/configuration.
 import { ConfirmationComponent } from './component/confirmation/confirmation.component';
 import { InstallationComponent } from './component/installation/installation.component';
 import { NavBottomComponent } from './component/nav-bottom/nav-bottom.component';
+import { CompleteComponent } from './component/complete/complete.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NavBottomComponent } from './component/nav-bottom/nav-bottom.component'
     ConfigurationComponent,
     ConfirmationComponent,
     InstallationComponent,
-    NavBottomComponent
+    NavBottomComponent,
+    CompleteComponent
   ],
   imports: [
     BrowserAnimationsModule,

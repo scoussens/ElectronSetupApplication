@@ -23,7 +23,9 @@ gulp.task('ng-build', (cb) => {
 
 gulp.task('tsc-build', (cb) => {
   exec('tsc electron.main.ts --lib es6,dom', (err, stdout, stderr) => {
-    cb(err);
+    setTimeout(() => {
+      cb(err);
+    }, 5000);
   })
 })
 

@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./installation.component.scss']
 })
 export class InstallationComponent implements OnInit {
+  linkNext = '/complete';
+  linkPrev = '/configuration';
 
   constructor() { }
 

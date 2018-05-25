@@ -8,4 +8,22 @@
     </p>
   </div>
 </div>
+<div class="row">
+  <div class="col-sm-6">
+    <button class="btn btn-primary" (click)="runStream()">Run Stream</button>
+  </div>
+  <div class="col-sm-6">
+    <button class="btn btn-primary" (click)="runJson()">Run Json</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <code>{{json | json}}</code>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <code *ngFor="let item of messages">{{item}}<br></code>
+  </div>
+</div>
 <app-nav-bottom [linkNext]="linkNext" [linkPrev]="linkPrev"></app-nav-bottom>

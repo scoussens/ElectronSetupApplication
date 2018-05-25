@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./configuration.component.scss']
 })
 export class ConfigurationComponent implements OnInit {
+  linkNext = '/confirmation';
+  linkPrev = '/license';
 
   constructor() { }
 
