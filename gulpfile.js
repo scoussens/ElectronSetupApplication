@@ -5,39 +5,36 @@ var { spawn, exec } = require('child_process');
 var electron = require('electron-connect').server.create();
 let waitOn = require('wait-on');
 
-gulp.task('ng-build', (cb) => {
-  let ngBuild = spawn('npm.cmd', ['run', 'ng:build']);
+gulp.task('ng-watch', (cb) => {
+  let ngBuild = spawn('npm.cmd', ['run', 'ng:watch:hash']);
   ngBuild.stdout.on('data', (data) => console.log(data.toString()));
   ngBuild.stderr.on('data', (data) => console.log(data.toString()));
+})
 
+gulp.task('tsc-watch', (cb) => {
+  let ngBuild = spawn('npm.cmd', ['run', 'electron:watch']);
+  ngBuild.stdout.on('data', (data) => console.log(data.toString()));
+  ngBuild.stderr.on('data', (data) => console.log(data.toString()));
+})
+
+gulp.task('wait-dep', (cb) => {
   waitOn({
     resources: [
-      'dist/index.html'
+      'dist/index.html',
+      'electron.main.js',
     ],
-    delay: 15000,
+    delay: 2000,
     log: true
   }, (err) => {
     cb(err);
   })
 })
 
-gulp.task('tsc-build', (cb) => {
-  exec('tsc electron.main.ts --lib es6,dom', (err, stdout, stderr) => {
-    setTimeout(() => {
-      cb(err);
-    }, 5000);
-  })
-})
-
-gulp.task('reload-watch', ['tsc-build', 'ng-build'], () => {
+gulp.task('reload-watch', ['wait-dep'], () => {
   electron.start();
-
-  // Restart browser process
-  gulp.watch(['electron.main.js', 'electron/**/*'], ['tsc-build', electron.restart]);
-
-  // Reload renderer process
-  gulp.watch(['src/**/*'], ['ng-build', electron.restart]);
+  gulp.watch(['electron.main.js', 'electron/**/*.js'], electron.restart);
+  gulp.watch(['dist/**/*'], electron.restart);
 })
 
-gulp.task('default', ['reload-watch']);
+gulp.task('default', ['tsc-watch', 'ng-watch', 'reload-watch']);
 

@@ -13,6 +13,7 @@
     "ng:build": "ng build",
     "ng:serve": "ng serve",
     "ng:watch": "ng build --watch",
+    "ng:watch:hash": "ng build --output-hashing=all --watch",
     "ng:prod": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",

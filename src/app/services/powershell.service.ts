@@ -7,28 +7,32 @@ import { NpsScript, PsCommandType, PsResult } from './powershell.models';
 
 @Injectable()
 export class PowershellService {
+  private _ipc: IpcRenderer | undefined;
+  private _ngZone: NgZone | undefined;
 
-  constructor(private _electronService: ElectronService, private zone: NgZone) {
+  constructor(private electronService: ElectronService, private ngZone: NgZone) {
+    this._ngZone = this.ngZone
+    this._ipc = this.electronService.ipcRenderer;
   }
 
   stream(commandType: PsCommandType, command: string, args: any[]) {
     return new Observable<PsResult>((observer) => {
       let uuid = uuidv4();
-      let ipc = this._electronService.ipcRenderer;
+      let ipc = this._ipc;
 
       console.log(uuid, commandType, command, args);
       ipc.send('powershell-invoke-console', { uuid, commandType, command, args });
 
       ipc.on(`powershell-invoke-message-${uuid}`, (event, res: PsResult) => {
-        this.zone.run(() => observer.next(res));
+        this._ngZone.run(() => observer.next(res));
       });
 
       ipc.on(`powershell-invoke-success-${uuid}`, (event, res: PsResult) => {
-        this.zone.run(() => observer.complete());
+        this._ngZone.run(() => observer.complete());
       });
 
       ipc.on(`powershell-invoke-error-${uuid}`, (event, err: PsResult) => {
-        this.zone.run(() => observer.error(err));
+        this._ngZone.run(() => observer.error(err));
       });
 
       return {
@@ -44,21 +48,21 @@ export class PowershellService {
   invoke(commandType: PsCommandType, command: string, args: any[]) {
     return new Observable<PsResult>((observer) => {
       let uuid = uuidv4();
-      let ipc = this._electronService.ipcRenderer;
+      let ipc = this._ipc;
 
       console.log(uuid, commandType, command, args);
       ipc.send('powershell-invoke-json', { uuid, commandType, command, args });
 
       ipc.on(`powershell-invoke-success-${uuid}`, (event, res: PsResult) => {
         console.log(res);
-        this.zone.run(() => {
+        this._ngZone.run(() => {
           observer.next(res);
           observer.complete();
         })
       });
 
       ipc.on(`powershell-invoke-error-${uuid}`, (event, err: PsResult) => {
-        this.zone.run(() => observer.error(err));
+        this._ngZone.run(() => observer.error(err));
       });
 
       return {
@@ -71,9 +75,9 @@ export class PowershellService {
   }
 
   listScripts() {
-    this._electronService.ipcRenderer.send('powershell-get-scripts');
+    this._ipc.send('powershell-get-scripts');
     return new Promise<NpsScript[]>((resolve, reject) => {
-      this._electronService.ipcRenderer.once('powershell-get-scripts', (event, result) => resolve(event));
+      this._ipc.once('powershell-get-scripts', (event, result) => resolve(event));
     })
   }
 }
