@@ -7,16 +7,14 @@ import { NpsScript, PsCommandType, PsResult } from './powershell.models';
 
 @Injectable()
 export class PowershellService {
-  private _ipc: IpcRenderer | undefined;
 
   constructor(private _electronService: ElectronService, private zone: NgZone) {
-    this._ipc = this._electronService.ipcRenderer;
   }
 
   stream(commandType: PsCommandType, command: string, args: any[]) {
     return new Observable<PsResult>((observer) => {
       let uuid = uuidv4();
-      let ipc = this._ipc;
+      let ipc = this._electronService.ipcRenderer;
 
       console.log(uuid, commandType, command, args);
       ipc.send('powershell-invoke-console', { uuid, commandType, command, args });
@@ -46,7 +44,7 @@ export class PowershellService {
   invoke(commandType: PsCommandType, command: string, args: any[]) {
     return new Observable<PsResult>((observer) => {
       let uuid = uuidv4();
-      let ipc = this._ipc;
+      let ipc = this._electronService.ipcRenderer;
 
       console.log(uuid, commandType, command, args);
       ipc.send('powershell-invoke-json', { uuid, commandType, command, args });
@@ -73,9 +71,9 @@ export class PowershellService {
   }
 
   listScripts() {
-    this._ipc.send('powershell-get-scripts');
+    this._electronService.ipcRenderer.send('powershell-get-scripts');
     return new Promise<NpsScript[]>((resolve, reject) => {
-      this._ipc.once('powershell-get-scripts', (event, result) => resolve(event));
+      this._electronService.ipcRenderer.once('powershell-get-scripts', (event, result) => resolve(event));
     })
   }
 }
