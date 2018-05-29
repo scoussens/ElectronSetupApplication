@@ -1,20 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxElectronModule } from 'ngx-electron';
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './modules/routing.module';
-import { PowershellService } from './services/powershell.service';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { LayoutModule } from '@progress/kendo-angular-layout';
-import { NavComponent } from './component/nav/nav.component';
-import { WelcomeComponent } from './component/welcome/welcome.component';
-import { LicenseComponent } from './component/license/license.component';
+import { NgxElectronModule } from 'ngx-electron';
+import { AppComponent } from './app.component';
+import { CompleteComponent } from './component/complete/complete.component';
 import { ConfigurationComponent } from './component/configuration/configuration.component';
 import { ConfirmationComponent } from './component/confirmation/confirmation.component';
 import { InstallationComponent } from './component/installation/installation.component';
+import { LicenseComponent } from './component/license/license.component';
 import { NavBottomComponent } from './component/nav-bottom/nav-bottom.component';
-import { CompleteComponent } from './component/complete/complete.component';
+import { NavComponent } from './component/nav/nav.component';
+import { WelcomeComponent } from './component/welcome/welcome.component';
+import { ComponentsConfigurationComponent } from './forms/components-configuration/components-configuration.component';
+import { DatabaseConfigurationComponent } from './forms/database-configuration/database-configuration.component';
+import { PlatformConfigurationComponent } from './forms/platform-configuration/platform-configuration.component';
+import { WebsiteConfigurationComponent } from './forms/website-configuration/website-configuration.component';
+import { AppRoutingModule } from './modules/routing.module';
+import { NavService } from './services/nav.service';
+import { PowershellService } from './services/powershell.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,11 @@ import { CompleteComponent } from './component/complete/complete.component';
     ConfirmationComponent,
     InstallationComponent,
     NavBottomComponent,
-    CompleteComponent
+    CompleteComponent,
+    ComponentsConfigurationComponent,
+    DatabaseConfigurationComponent,
+    WebsiteConfigurationComponent,
+    PlatformConfigurationComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -36,7 +45,7 @@ import { CompleteComponent } from './component/complete/complete.component';
     GridModule,
     LayoutModule
   ],
-  providers: [PowershellService],
+  providers: [PowershellService, NavService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

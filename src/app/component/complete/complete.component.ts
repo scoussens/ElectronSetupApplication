@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavLink, NavService } from '../../services/nav.service';
 
 @Component({
   selector: 'app-complete',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./complete.component.scss']
 })
 export class CompleteComponent implements OnInit {
-
-  constructor() { }
+  linkNext: NavLink = null;
+  linkPrev: NavLink = null;
+  
+  constructor(private navService: NavService) {}
 
   ngOnInit() {
+    this.linkPrev = this.navService.getLink('Welcome');
   }
 
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import "rxjs/operators/take";
-import { PsCommandType, PsResult } from "../../services/powershell.models";
-import { PowershellService } from "./../../services/powershell.service";
+import { NavLink, NavService } from "../../services/nav.service";
 
 @Component({
   selector: "app-welcome",
@@ -9,49 +8,15 @@ import { PowershellService } from "./../../services/powershell.service";
   styleUrls: ["./welcome.component.scss"]
 })
 export class WelcomeComponent implements OnInit {
-  linkNext = "/license";
-  linkPrev = null;
-  messages: string[] = ["Waiting for stream..."];
-  json: PsResult;
+  linkNext: NavLink = null;
+  linkPrev: NavLink = null;
+  welcomeMessage = "Welcome";
+  productTitle = "Cireson Control Center Setup";
 
-  constructor(
-    private psService: PowershellService
-  ) {}
+  constructor(private navService: NavService) {}
 
-  ngOnInit() {}
-
-  runStream() {
-    this.psService
-      .stream(PsCommandType.Script, "Test-Stream.ps1", [
-        { Number: 1 },
-        { Letter: "A" },
-        { Text: "Hello world." },
-        { ComputerName: "localhost" },
-        { InternetAddress: "http://www.google.com" }
-      ])
-      .subscribe(
-        data => this.messages.push(data.output),
-        err => {
-          console.log(err);
-        }
-      );
+  ngOnInit() {
+    this.linkNext = this.navService.getLink('License');
   }
 
-  runJson() {
-    setTimeout(() => this.messages.push("Clicked the JSON button."), 1000);
-    this.psService
-      .invoke(PsCommandType.Script, "Test-Json.ps1", [
-        { Number: 1 },
-        { Letter: "A" },
-        { Text: "Hello world." },
-        { ComputerName: "localhost" },
-        { InternetAddress: "http://www.google.com" }
-      ])
-      .subscribe(
-        data => (this.json = data),
-        err => {
-          console.log(err);
-        }
-      );
-  }
 }

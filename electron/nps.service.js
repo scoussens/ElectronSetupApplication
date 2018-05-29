@@ -63,7 +63,10 @@ var NodePowerShellService = /** @class */ (function () {
             console.log(err);
             ipcMessage
                 .sender
-                .send("powershell-invoke-error-" + request.uuid, "" + err);
+                .send("powershell-invoke-error-" + request.uuid, {
+                message: 'error',
+                output: err
+            });
         }
     };
     NodePowerShellService.prototype.invokeJson = function (ipcMessage, request) {

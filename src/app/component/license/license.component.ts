@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavLink, NavService } from '../../services/nav.service';
 
 @Component({
   selector: 'app-license',
@@ -6,12 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./license.component.scss']
 })
 export class LicenseComponent implements OnInit {
-  linkNext = '/configuration';
-  linkPrev = '/welcome';
+  linkNext: NavLink = null;
+  linkPrev: NavLink = null;
 
-  constructor() { }
+  constructor(private navService: NavService) {}
 
   ngOnInit() {
+    this.linkNext = this.navService.getLink('Configuration');
+    this.linkPrev = this.navService.getLink('Welcome');
   }
 
 }

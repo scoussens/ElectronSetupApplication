@@ -10,7 +10,8 @@ import { CompleteComponent } from './../component/complete/complete.component';
 const routes: Routes = [
     {
         path: '',
-        component: WelcomeComponent
+        redirectTo: 'welcome',
+        pathMatch: 'full'
     },
     {
         path: 'welcome',
@@ -22,7 +23,8 @@ const routes: Routes = [
     },
     {
         path: 'configuration',
-        component: ConfigurationComponent
+        component: ConfigurationComponent,
+        children: []
     },
     {
         path: 'confirmation',
@@ -42,4 +44,4 @@ const routes: Routes = [
     imports: [RouterModule.forRoot(routes, {useHash: true})],
     exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

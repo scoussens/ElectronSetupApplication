@@ -1,8 +1,29 @@
 <div class="row">
   <div class="col">
-    <p>
-      Installation
-    </p>
+    <h2>{{title}}</h2>
+  </div>
+  <div class="col">
+    <button class="btn btn-primary" (click)="runStream()">Start Stream</button>
+  </div>
+  <div class="col">
+    <button class="btn btn-primary" (click)="runError()">Start Error</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <table class="table table-dark table-sm">
+      <thead>
+        <tr>
+          <td scope="col">#</td>
+          <td scope="col">Log Entry</td>
+        </tr>
+        <tbody>
+          <tr *ngFor="let item of messages; index as i">
+            <th scope="row">{{i}}</th>
+            <td>{{item}}</td>
+          </tr>
+        </tbody>
+    </table>
   </div>
 </div>
 <app-nav-bottom [linkNext]="linkNext" [linkPrev]="linkPrev"></app-nav-bottom>

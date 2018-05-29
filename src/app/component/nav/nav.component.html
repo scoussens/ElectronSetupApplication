@@ -2,24 +2,9 @@
   <a class="navbar-brand" href="#">
     <img src="assets/cmp-icon.png" width="30" height="30" alt="" style="border-radius: .25rem">
   </a>
-  <ul class="navbar-nav content-justify-center">
-    <li class="nav-item active">
-      <a class="nav-link" routerLink="/welcome">Welcome</a>
+  <ul class="navbar-nav">
+    <li *ngFor="let link of navLinks" class="nav-item" routerLinkActive="active">
+      <a *ngIf="link.enabled" class="nav-link" routerLink="/{{link.route}}">{{link.name}}</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/license">License</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/configuration">Configuration</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/confirmation">Confirmation</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/installation">Installation</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" routerLink="/complete">Completed</a>
-      </li>
   </ul>
 </nav>

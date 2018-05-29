@@ -1,41 +1,16 @@
-<div class="row">
-  <div class="col">
-    <p>
-      Welcome to the Cireson Control Center installer.
-    </p>
-    <p>
-      Here we will help you install the Control Center application and then take you to the Control Center website.
-    </p>
+<div class="row m-4">
+  <div class="col text-center">
+    <h1>{{welcomeMessage}}</h1>
+  </div>
+</div>
+<div class="row mb-5">
+  <div class="col text-center">
+    <img class="rounded" src="assets/CiresonMeatball.png" alt="">
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-6">
-    <button class="btn btn-primary" (click)="runStream()">Run Stream</button>
-  </div>
-  <div class="col-sm-6">
-    <button class="btn btn-primary" (click)="runJson()">Run Json</button>
+  <div class="col text-center">
+    <h2>{{productTitle}}</h2>
   </div>
 </div>
-<div class="row">
-  <div class="col">
-    <code>{{json | json}}</code>
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    <table class="table table-dark table-sm">
-      <thead>
-        <tr>
-          <td scope="col">#</td>
-          <td scope="col">Log Entry</td>
-        </tr>
-        <tbody>
-          <tr *ngFor="let item of messages; index as i">
-            <th scope="row">{{i}}</th>
-            <td>{{item}}</td>
-          </tr>
-        </tbody>
-    </table>
-  </div>
-</div>
-<app-nav-bottom [linkNext]="linkNext" [linkPrev]="linkPrev"></app-nav-bottom>
+<app-nav-bottom [linkNext]="linkNext" [linkNextText]="'Let\'s get started!'" [linkPrev]="linkPrev"></app-nav-bottom>

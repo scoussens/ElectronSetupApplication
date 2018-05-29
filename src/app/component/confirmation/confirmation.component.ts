@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavLink, NavService } from './../../services/nav.service';
 
 @Component({
   selector: 'app-confirmation',
@@ -6,12 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./confirmation.component.scss']
 })
 export class ConfirmationComponent implements OnInit {
-  linkNext = '/installation';
-  linkPrev = '/configuration';
+  linkNext: NavLink = null;
+  linkPrev: NavLink = null;
 
-  constructor() { }
+  constructor(private navService: NavService) {}
 
   ngOnInit() {
+    this.linkNext = this.navService.getLink('Installation');
+    this.linkPrev = this.navService.getLink('Configuration');
   }
 
 }

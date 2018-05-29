@@ -67,7 +67,10 @@ export class NodePowerShellService {
             console.log(err);
             ipcMessage
                 .sender
-                .send(`powershell-invoke-error-${request.uuid}`, `${err}`);
+                .send(`powershell-invoke-error-${request.uuid}`, {
+                    message: 'error',
+                    output: err
+                });
         }
     }
 

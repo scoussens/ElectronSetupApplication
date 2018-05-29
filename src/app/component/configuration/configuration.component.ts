@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavLink, NavService } from '../../services/nav.service';
+import { PsResult } from './../../services/powershell.models';
 
 @Component({
   selector: 'app-configuration',
@@ -6,12 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./configuration.component.scss']
 })
 export class ConfigurationComponent implements OnInit {
-  linkNext = '/confirmation';
-  linkPrev = '/license';
+  linkNext: NavLink = null;
+  linkPrev: NavLink = null;
+  title = 'Configuration';
+  messages: PsResult[] = [];
 
-  constructor() { }
+  constructor(private navService: NavService) {}
 
   ngOnInit() {
+    this.linkNext = this.navService.getLink('Confirmation');
+    this.linkPrev = this.navService.getLink('License');
   }
-
 }

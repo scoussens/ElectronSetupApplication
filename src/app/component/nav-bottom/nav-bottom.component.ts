@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NavLink, NavService } from './../../services/nav.service';
 
 @Component({
   selector: 'app-nav-bottom',
@@ -6,12 +7,17 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./nav-bottom.component.scss']
 })
 export class NavBottomComponent implements OnInit {
-  @Input() linkPrev = null;
-  @Input() linkNext = null;
+  @Input() linkPrev: NavLink = null;
+  @Input() linkPrevText: string = null;
+  @Input() linkNext: NavLink = null;
+  @Input() linkNextText: string = null;
   
-  constructor() { }
+  constructor(private navService: NavService) { }
 
   ngOnInit() {
   }
 
+  enableLink(name: string) {
+    this.navService.enableParent(name);
+  }
 }
