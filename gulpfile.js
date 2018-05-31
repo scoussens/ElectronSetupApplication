@@ -3,9 +3,16 @@
 var gulp = require('gulp');
 var { spawn, exec } = require('child_process');
 var electron = require('electron-connect').server.create();
+let del = require('del');
 let waitOn = require('wait-on');
 
-gulp.task('ng-watch', (cb) => {
+gulp.task('clean:dist', function () {
+  return del([
+    'dist/**/*'
+  ]);
+});
+
+gulp.task('ng-watch', ['clean:dist'], (cb) => {
   let ngBuild = spawn('npm.cmd', ['run', 'ng:watch:hash']);
   ngBuild.stdout.on('data', (data) => console.log(data.toString()));
   ngBuild.stderr.on('data', (data) => console.log(data.toString()));
