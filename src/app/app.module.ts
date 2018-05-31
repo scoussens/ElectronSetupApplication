@@ -1,4 +1,6 @@
+import { ConfigurationService } from './services/configuration.service';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GridModule } from '@progress/kendo-angular-grid';
@@ -20,6 +22,9 @@ import { WebsiteConfigurationComponent } from './forms/website-configuration/web
 import { AppRoutingModule } from './modules/routing.module';
 import { NavService } from './services/nav.service';
 import { PowershellService } from './services/powershell.service';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { InputsModule } from '@progress/kendo-angular-inputs';
+import { UserpickerComponent } from './directives/userpicker/userpicker.component';
 
 @NgModule({
   declarations: [
@@ -35,17 +40,21 @@ import { PowershellService } from './services/powershell.service';
     ComponentsConfigurationComponent,
     DatabaseConfigurationComponent,
     WebsiteConfigurationComponent,
-    PlatformConfigurationComponent
+    PlatformConfigurationComponent,
+    UserpickerComponent
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
+    FormsModule,
     NgxElectronModule,
     AppRoutingModule,
     GridModule,
-    LayoutModule
+    LayoutModule,
+    DropDownsModule,
+    InputsModule
   ],
-  providers: [PowershellService, NavService],
+  providers: [PowershellService, NavService, ConfigurationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

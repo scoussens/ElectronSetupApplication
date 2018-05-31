@@ -1,3 +1,55 @@
-<p>
-  components-configuration works!
-</p>
+<div class="row mb-2">
+  <div class="col">
+    <h4>{{title}}</h4>
+  </div>
+</div>
+<div class="row mb-2 mt-2">
+  <div class="col">
+    <label>Install All Components</label>
+    <div class="input-group">
+      <kendo-switch [(ngModel)]="components.installAll" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+    </div>
+  </div>
+</div>
+<div *ngIf="!components.installAll">
+  <div class="row mb-2 mt-2">
+    <div class="col-sm-4">
+      <label>Install Database</label>
+    </div>
+    <div class="col">
+      <kendo-switch [(ngModel)]="components.installDb" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+    </div>
+  </div>
+  <div class="row mb-2 mt-2">
+    <div class="col-sm-4">
+      <label>Install Website</label>
+    </div>
+    <div class="col">
+      <kendo-switch [(ngModel)]="components.installWebsite" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+    </div>
+  </div>
+  <div class="row mb-2 mt-2">
+    <div class="col-sm-4">
+      <label>Install Services</label>
+    </div>
+    <div class="col">
+      <kendo-switch [(ngModel)]="components.installServices" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+    </div>
+  </div>
+  <div class="row mb-2 mt-2">
+    <div class="col-sm-4">
+      <label>Install MDT</label>
+    </div>
+    <div class="col">
+      <kendo-switch [(ngModel)]="components.installMdt" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+    </div>
+  </div>
+  <div class="row mb-2 mt-2">
+    <div class="col-sm-4">
+      <label>Install SSRS</label>
+    </div>
+    <div class="col">
+      <kendo-switch [(ngModel)]="components.installSsrs" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,13 @@
-<p>
-  database-configuration works!
-</p>
+<div class="row mb-2">
+  <div class="col">
+    <h4>{{title}}</h4>
+  </div>
+</div>
+<div class="row mb-2 mt-2">
+  <div class="col">
+    <label>Database Username</label>
+    <app-userpicker [(username)]="dbUsername"></app-userpicker>
+    <p>{{dbUsername}}</p>
+  </div>
+</div>
+
