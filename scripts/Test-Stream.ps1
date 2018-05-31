@@ -13,9 +13,9 @@ $output = [PSCustomObject]@{
 
 try {
     Write-Host "Script is starting...";
-    Write-Host "Going to sleep for 3 seconds.";
+    Write-Host "Going to sleep for 10 seconds.";
 
-    Start-Sleep -Seconds 3
+    Start-Sleep -Seconds 10
 
     Write-Host "Waking up.";
     Write-Host "I received the following parameters:";
