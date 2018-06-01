@@ -3,9 +3,9 @@ export interface NpsScript {
     path: string
 }
 
-export interface PsResult {
+export interface PsResult<T> {
     message: string
-    output: any
+    output: T
 }
 
 export enum PsCommandType {

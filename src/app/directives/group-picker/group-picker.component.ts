@@ -1,13 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { AutoCompleteComponent } from '@progress/kendo-angular-dropdowns';
-import { PsCommandType } from '../../services/powershell.models';
-import { PowershellService } from '../../services/powershell.service';
-
-interface Group {
-  cn: string,
-  displayName: string,
-  samAccountName: string
-}
+import { ConfigurationService, Group } from './../../services/configuration.service';
 
 @Component({
   selector: 'app-group-picker',
@@ -28,7 +21,7 @@ export class GroupPickerComponent implements OnInit {
     this.usernameChange.emit(this._groupname);
   }
 
-  constructor(private psService: PowershellService) { }
+  constructor(private cfgService: ConfigurationService) { }
 
   ngOnInit() {
 
@@ -41,7 +34,7 @@ export class GroupPickerComponent implements OnInit {
       .filter(value => value.length > 2)
       .do(() => this.autocomplete.loading = true)
       .debounceTime(250)
-      .switchMap(value => this.psService.invoke(PsCommandType.Script, 'Get-ADUserOrGroup.ps1', [{ samAccountName: value },{ objectClass: 'group'}]))
+      .switchMap(value => this.cfgService.findAdGroups(value))
       .subscribe(data => {
         this.data = data.output;
         this.autocomplete.loading = false;

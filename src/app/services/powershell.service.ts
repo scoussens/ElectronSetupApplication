@@ -15,23 +15,23 @@ export class PowershellService {
     this._ipc = this.electronService.ipcRenderer;
   }
 
-  stream(commandType: PsCommandType, command: string, args: any[]) {
-    return new Observable<PsResult>((observer) => {
+  stream<T>(commandType: PsCommandType, command: string, args: any[]) {
+    return new Observable<PsResult<T>>((observer) => {
       let uuid = uuidv4();
       let ipc = this._ipc;
 
       console.log(uuid, commandType, command, args);
       ipc.send('powershell-invoke-console', { uuid, commandType, command, args });
 
-      ipc.on(`powershell-invoke-message-${uuid}`, (event, res: PsResult) => {
+      ipc.on(`powershell-invoke-message-${uuid}`, (event, res: PsResult<T>) => {
         this._ngZone.run(() => observer.next(res));
       });
 
-      ipc.on(`powershell-invoke-success-${uuid}`, (event, res: PsResult) => {
+      ipc.on(`powershell-invoke-success-${uuid}`, (event, res: PsResult<T>) => {
         this._ngZone.run(() => observer.complete());
       });
 
-      ipc.on(`powershell-invoke-error-${uuid}`, (event, err: PsResult) => {
+      ipc.on(`powershell-invoke-error-${uuid}`, (event, err: PsResult<T>) => {
         this._ngZone.run(() => observer.error(err));
       });
 
@@ -45,15 +45,15 @@ export class PowershellService {
     })
   }
 
-  invoke(commandType: PsCommandType, command: string, args: any[]) {
-    return new Observable<PsResult>((observer) => {
+  invoke<T>(commandType: PsCommandType, command: string, args: any[]) {
+    return new Observable<PsResult<T>>((observer) => {
       let uuid = uuidv4();
       let ipc = this._ipc;
 
       console.log(uuid, commandType, command, args);
       ipc.send('powershell-invoke-json', { uuid, commandType, command, args });
 
-      ipc.on(`powershell-invoke-success-${uuid}`, (event, res: PsResult) => {
+      ipc.on(`powershell-invoke-success-${uuid}`, (event, res: PsResult<T>) => {
         console.log(res);
         this._ngZone.run(() => {
           observer.next(res);
@@ -61,7 +61,7 @@ export class PowershellService {
         })
       });
 
-      ipc.on(`powershell-invoke-error-${uuid}`, (event, err: PsResult) => {
+      ipc.on(`powershell-invoke-error-${uuid}`, (event, err: PsResult<T>) => {
         this._ngZone.run(() => observer.error(err));
       });
 

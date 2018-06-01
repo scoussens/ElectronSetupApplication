@@ -1,4 +1,18 @@
 import { Injectable } from '@angular/core';
+import { PsCommandType } from './powershell.models';
+import { PowershellService } from './powershell.service';
+
+export interface User {
+  cn: string,
+  displayName: string,
+  samAccountName: string
+}
+
+export interface Group {
+  cn: string,
+  displayName: string,
+  samAccountName: string
+}
 
 export interface ConfigurationSettings {
   components: {
@@ -150,5 +164,17 @@ export class ConfigurationService {
     }
   };
 
-  constructor() { }
+  constructor(private ps: PowershellService) { }
+
+  findAdUsers(samaccountname: string) {
+    return this.ps.invoke<User[]>(PsCommandType.Script, 'Get-ADUserOrGroup.ps1', [{ samAccountName: samaccountname }, { objectClass: 'user' }]);
+  }
+
+  findAdGroups(samaccountname: string) {
+    return this.ps.invoke<Group[]>(PsCommandType.Script, 'Get-ADUserOrGroup.ps1', [{ samAccountName: samaccountname }, { objectClass: 'group' }]);
+  }
+
+  validateAdCredentials(username: string, password: string) {
+    return this.ps.invoke(PsCommandType.Script, 'Test-AdCredential.ps1', [{username: username}, {password: password}]);
+  }
 }

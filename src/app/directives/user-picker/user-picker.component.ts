@@ -3,14 +3,7 @@ import { AutoCompleteComponent } from '@progress/kendo-angular-dropdowns';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/switchMap';
-import { PsCommandType } from '../../services/powershell.models';
-import { PowershellService } from '../../services/powershell.service';
-
-interface User {
-  cn: string,
-  displayName: string,
-  samAccountName: string
-}
+import { ConfigurationService, User } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-user-picker',
@@ -31,7 +24,7 @@ export class UserPickerComponent implements OnInit {
     this.usernameChange.emit(this._username);
   }
 
-  constructor(private psService: PowershellService) { }
+  constructor(private cfgService: ConfigurationService) { }
 
   ngOnInit() {
 
@@ -44,7 +37,7 @@ export class UserPickerComponent implements OnInit {
       .filter(value => value.length > 2)
       .do(() => this.autocomplete.loading = true)
       .debounceTime(250)
-      .switchMap(value => this.psService.invoke(PsCommandType.Script, 'Get-ADUserOrGroup.ps1', [{ samAccountName: value }, { objectClass: 'user' }]))
+      .switchMap(value => this.cfgService.findAdUsers(value))
       .subscribe(data => {
         this.data = data.output;
         this.autocomplete.loading = false;
