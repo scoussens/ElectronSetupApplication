@@ -4,9 +4,9 @@ import { PsCommandType } from '../../services/powershell.models';
 import { PowershellService } from '../../services/powershell.service';
 
 interface Group {
-  CN: string,
-  DisplayName: string,
-  SamAccountName: string
+  cn: string,
+  displayName: string,
+  samAccountName: string
 }
 
 @Component({
@@ -41,7 +41,7 @@ export class GroupPickerComponent implements OnInit {
       .filter(value => value.length > 2)
       .do(() => this.autocomplete.loading = true)
       .debounceTime(250)
-      .switchMap(value => this.psService.invoke(PsCommandType.Script, 'Find-ADUser.ps1', [{ username: value }]))
+      .switchMap(value => this.psService.invoke(PsCommandType.Script, 'Get-ADUserOrGroup.ps1', [{ samAccountName: value },{ objectClass: 'group'}]))
       .subscribe(data => {
         this.data = data.output;
         this.autocomplete.loading = false;

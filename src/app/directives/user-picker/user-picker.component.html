@@ -1,5 +1,8 @@
 <div class="input-group">
-  <kendo-autocomplete #autocomplete [data]="data" [valueField]="'SamAccountName'" [value]="username" [filterable]="true"
+  <kendo-autocomplete #autocomplete [data]="data" [valueField]="'samAccountName'" [value]="username" [filterable]="true"
     (valueChange)="select($event)" (open)="open($event)" [placeholder]="'Username'">
+    <ng-template kendoAutoCompleteNoDataTemplate>
+        <h6><span class="k-icon k-i-warning"></span> No users found.</h6>
+    </ng-template>
   </kendo-autocomplete>
 </div>
