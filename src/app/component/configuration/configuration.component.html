@@ -1,19 +1,3 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
-  <ul class="navbar-nav">
-    <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" routerLink="/configuration/components">Components</a>
-    </li>
-    <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" routerLink="/configuration/database">Database</a>
-    </li>
-    <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" routerLink="/configuration/platform">Platform</a>
-    </li>
-    <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" routerLink="/configuration/website">Website</a>
-    </li>
-  </ul>
-</nav>
-<router-outlet></router-outlet>
+<app-configuration-tabs></app-configuration-tabs>
 <app-nav-bottom [linkNext]="linkNext" [linkPrev]="linkPrev"></app-nav-bottom>
 

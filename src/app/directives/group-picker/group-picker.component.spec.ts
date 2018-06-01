@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserpickerComponent } from './userpicker.component';
+import { GroupPickerComponent } from './group-picker.component';
 
-describe('UserpickerComponent', () => {
-  let component: UserpickerComponent;
-  let fixture: ComponentFixture<UserpickerComponent>;
+describe('GroupPickerComponent', () => {
+  let component: GroupPickerComponent;
+  let fixture: ComponentFixture<GroupPickerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserpickerComponent ]
+      declarations: [ GroupPickerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserpickerComponent);
+    fixture = TestBed.createComponent(GroupPickerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col">
+    <h6>Application Pool Account</h6>
+  </div>
+</div>
+<div class="row mb-2">
+  <div class="col">
+    <app-user-picker [(username)]="website.appPoolUser"></app-user-picker>
+  </div>
+  <div class="col">
+    <div class="input-group">
+      <input kendoTextBox type="password" placeholder="Password" [(ngModel)]="website.appPoolPassword" />
+    </div>
+  </div>
+</div>
+<div class="row mb-2">
+  <div class="col">
+    <app-group-picker [(groupname)]="website.adminGroup"></app-group-picker>
+  </div>
+</div>
+

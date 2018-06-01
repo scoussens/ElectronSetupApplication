@@ -1,0 +1,107 @@
+<div class="row">
+  <div class="col">
+    <h6>Platform Service Account</h6>
+  </div>
+</div>
+<div class="row mb-2">
+  <div class="col">
+    <div>
+      <small>Use Application Pool</small>
+    </div>
+    <div>
+      <kendo-switch [(ngModel)]="platform.useAppPool" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+    </div>
+  </div>
+  <div class="col" *ngIf="!platform.useAppPool">
+    <kendo-textbox-container floatingLabel="Username">
+      <input kendoTextBox [(ngModel)]="platform.platformUsername" />
+    </kendo-textbox-container>
+  </div>
+  <div class="col" *ngIf="!platform.useAppPool">
+    <kendo-textbox-container floatingLabel="Password">
+      <input kendoTextBox type="password" [(ngModel)]="platform.platformPassword" />
+    </kendo-textbox-container>
+  </div>
+</div>
+<div class="row mb-2">
+  <div class="col">
+    <h6>Remote Manage Service Account</h6>
+  </div>
+</div>
+<div class="row mb-2">
+  <div class="col">
+    <div>
+      <small>Use Platform Account</small>
+    </div>
+    <div>
+      <kendo-switch [(ngModel)]="platform.rmUsePlatformAccount" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+    </div>
+  </div>
+
+  <div class="col" *ngIf="!platform.rmUsePlatformAccount">
+    <kendo-textbox-container floatingLabel="Username">
+      <input kendoTextBox [(ngModel)]="platform.rmUsername" />
+    </kendo-textbox-container>
+  </div>
+  <div class="col" *ngIf="!platform.rmUsePlatformAccount">
+    <kendo-textbox-container floatingLabel="Password">
+      <input kendoTextBox type="password" [(ngModel)]="platform.rmPassword" />
+    </kendo-textbox-container>
+  </div>
+
+</div>
+<div class="row mb-2">
+  <div class="col">
+    <h6>Active Directory Service Account</h6>
+  </div>
+</div>
+<div class="row mb-2">
+  <div class="col">
+    <div>
+      <small>Use Platform Account</small>
+    </div>
+    <div>
+      <kendo-switch [(ngModel)]="platform.adUsePlatformAccount" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+    </div>
+  </div>
+
+  <div class="col" *ngIf="!platform.adUsePlatformAccount">
+    <kendo-textbox-container floatingLabel="Username">
+      <input kendoTextBox [(ngModel)]="platform.adUsername" />
+    </kendo-textbox-container>
+  </div>
+  <div class="col" *ngIf="!platform.adUsePlatformAccount">
+    <kendo-textbox-container floatingLabel="Password">
+      <input kendoTextBox type="password" [(ngModel)]="platform.adPassword" />
+    </kendo-textbox-container>
+  </div>
+
+</div>
+<div class="row mb-2">
+  <div class="col">
+    <h6>Configuration Manager Service Account</h6>
+  </div>
+</div>
+<div class="row mb-2">
+  <div class="col">
+    <div>
+      <small>Use Platform Account</small>
+    </div>
+    <div>
+      <kendo-switch [(ngModel)]="platform.cmUsePlatformAccount" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+    </div>
+  </div>
+
+  <div class="col" *ngIf="!platform.cmUsePlatformAccount">
+    <kendo-textbox-container floatingLabel="Username">
+      <input kendoTextBox [(ngModel)]="platform.cmUsername" />
+    </kendo-textbox-container>
+  </div>
+  <div class="col" *ngIf="!platform.cmUsePlatformAccount">
+    <kendo-textbox-container floatingLabel="Password">
+      <input kendoTextBox type="password" [(ngModel)]="platform.cmPassword" />
+    </kendo-textbox-container>
+  </div>
+  
+</div>
+

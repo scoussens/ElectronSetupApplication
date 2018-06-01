@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
 
-export enum ConfigurationAuthTypes {
-  WindowsAuth,
-  SqlAuth
-}
-
 export interface ConfigurationSettings {
   components: {
     installAll: boolean
@@ -18,7 +13,7 @@ export interface ConfigurationSettings {
     siteServerName: string
     dbServerName: string
     dbName: string
-    dbAuthType: ConfigurationAuthTypes
+    dbUseNtAuth: boolean
     dbSqlUsername: string
     dbSqlPassword: string
   }
@@ -26,7 +21,7 @@ export interface ConfigurationSettings {
     licenseKey: string
     dbServerName: string
     dbName: string
-    dbAuthType: ConfigurationAuthTypes
+    dbUseNtAuth: boolean
     dbSqlUsername: string
     dbSqlPassword: string
     hostServiceLocalSystem: boolean
@@ -53,14 +48,14 @@ export interface ConfigurationSettings {
   ssrs: {
     dbServerName: string
     dbName: string
-    dbAuthType: ConfigurationAuthTypes
+    dbUseNtAuth: boolean
     dbSqlUsername: string
     dbSqlPassword: string
   }
   mdt: {
     dbServerName: string
     dbName: string
-    dbAuthType: ConfigurationAuthTypes
+    dbUseNtAuth: boolean
     dbSqlUsername: string
     dbSqlPassword: string
   }
@@ -94,63 +89,63 @@ export class ConfigurationService {
     cm: {
       siteServerName: '',
       dbServerName: '',
-      dbName: 'string',
-      dbAuthType: ConfigurationAuthTypes.WindowsAuth,
-      dbSqlUsername: 'string',
-      dbSqlPassword: 'string'
+      dbName: '',
+      dbUseNtAuth: true,
+      dbSqlUsername: '',
+      dbSqlPassword: ''
     },
     cc: {
-      licenseKey: 'string',
-      dbServerName: 'string',
+      licenseKey: '',
+      dbServerName: '',
       dbName: '',
-      dbAuthType: ConfigurationAuthTypes.WindowsAuth,
-      dbSqlUsername: 'string',
-      dbSqlPassword: 'string',
+      dbUseNtAuth: true,
+      dbSqlUsername: '',
+      dbSqlPassword: '',
       hostServiceLocalSystem: false,
-      hostServiceUsername: 'string',
-      hostServicePassword: 'string',
+      hostServiceUsername: '',
+      hostServicePassword: '',
       deploymentServicePort: 8080,
       cacheServicePort: 8081
     },
     platform: {
       useAppPool: false,
-      platformUsername: 'string',
-      platformPassword: 'string',
+      platformUsername: '',
+      platformPassword: '',
       rmUsePlatformAccount: false,
-      rmUsername: 'string',
-      rmPassword: 'string',
+      rmUsername: '',
+      rmPassword: '',
       cmUsePlatformAccount: false,
-      cmUsername: 'string',
-      cmPassword: 'string',
+      cmUsername: '',
+      cmPassword: '',
       adUsePlatformAccount: false,
-      adUsername: 'string',
-      adPassword: 'string',
-      adRoot: 'string'
+      adUsername: '',
+      adPassword: '',
+      adRoot: ''
     },
     ssrs: {
-      dbServerName: 'string',
-      dbName: 'string',
-      dbAuthType: ConfigurationAuthTypes.WindowsAuth,
-      dbSqlUsername: 'string',
-      dbSqlPassword: 'string'
+      dbServerName: '',
+      dbName: '',
+      dbUseNtAuth: true,
+      dbSqlUsername: '',
+      dbSqlPassword: ''
     },
     mdt: {
-      dbServerName: 'string',
-      dbName: 'string',
-      dbAuthType: ConfigurationAuthTypes.WindowsAuth,
-      dbSqlUsername: 'string',
-      dbSqlPassword: 'string'
+      dbServerName: '',
+      dbName: '',
+      dbUseNtAuth: true,
+      dbSqlUsername: '',
+      dbSqlPassword: ''
     },
     website: {
-      appPoolUser: 'string',
-      appPoolPassword: 'string',
-      adminGroup: 'string',
-      installDir: 'string',
-      sitename: 'string',
-      hostname: 'string',
+      appPoolUser: '',
+      appPoolPassword: '',
+      adminGroup: '',
+      installDir: '',
+      sitename: '',
+      hostname: '',
       sitePort: 80,
       sslPort: 443,
-      sslCert: 'string',
+      sslCert: '',
       registerDns: false
     }
   };

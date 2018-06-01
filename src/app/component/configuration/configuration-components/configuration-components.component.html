@@ -1,14 +1,9 @@
-<div class="row mb-2">
-  <div class="col">
-    <h4>{{title}}</h4>
-  </div>
-</div>
-<div class="row mb-2 mt-2">
-  <div class="col">
+<div class="row">
+  <div class="col-sm-4">
     <label>Install All Components</label>
-    <div class="input-group">
-      <kendo-switch [(ngModel)]="components.installAll" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
-    </div>
+  </div>
+  <div class="col">
+    <kendo-switch [(ngModel)]="components.installAll" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
   </div>
 </div>
 <div *ngIf="!components.installAll">
@@ -52,4 +47,4 @@
       <kendo-switch [(ngModel)]="components.installSsrs" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
     </div>
   </div>
-</div>
+

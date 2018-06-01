@@ -1,0 +1,5 @@
+<div class="input-group">
+  <kendo-autocomplete #autocomplete [data]="data" [valueField]="'SamAccountName'" [value]="username" [filterable]="true"
+    (valueChange)="select($event)" (open)="open($event)" [placeholder]="'Username'">
+  </kendo-autocomplete>
+</div>
