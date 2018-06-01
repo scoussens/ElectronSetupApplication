@@ -12,8 +12,8 @@ export class ConfigurationWebsiteComponent implements OnInit {
     appPoolPassword: string; 
     adminGroup: string; 
     installDir: string; 
-    sitename: string; 
-    hostname: string; 
+    siteName: string; 
+    hostName: string; 
     sitePort: number; 
     sslPort: number; 
     sslCert: string; 

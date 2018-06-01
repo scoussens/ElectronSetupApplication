@@ -8,14 +8,63 @@
     <app-user-picker [(username)]="website.appPoolUser"></app-user-picker>
   </div>
   <div class="col">
-    <div class="input-group">
-      <input kendoTextBox type="password" placeholder="Password" [(ngModel)]="website.appPoolPassword" />
-    </div>
+    <app-validated-password [username]="website.appPoolUser" [(password)]="website.appPoolPassword"></app-validated-password>
   </div>
 </div>
 <div class="row mb-2">
   <div class="col">
     <app-group-picker [(groupname)]="website.adminGroup"></app-group-picker>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <h6>Website Configuration</h6>
+  </div>
+</div>
+<div class="row mb-2">
+  <div class="col">
+    <kendo-textbox-container floatingLabel="Install Directory">
+      <input kendoTextBox [(ngModel)]="website.installDir" />
+    </kendo-textbox-container>
+  </div>
+  <div class="col">
+    <kendo-textbox-container floatingLabel="Site Name">
+      <input kendoTextBox [(ngModel)]="website.siteName" />
+    </kendo-textbox-container>
+  </div>
+</div>
+<div class="row mb-2">
+  <div class="col">
+    <kendo-textbox-container floatingLabel="Host Name">
+      <input kendoTextBox [(ngModel)]="website.hostName" />
+    </kendo-textbox-container>
+  </div>
+  <div class="col">
+    <kendo-textbox-container floatingLabel="HTTP Port">
+      <kendo-numerictextbox [(ngModel)]="website.sitePort" [min]="0" [format]="'n0'" required>
+      </kendo-numerictextbox>
+    </kendo-textbox-container>
+  </div>
+</div>
+<div class="row mb-2">
+  <div class="col">
+    <kendo-textbox-container floatingLabel="SSL Certificate">
+      <input kendoTextBox [(ngModel)]="website.sslCert" />
+    </kendo-textbox-container>
+  </div>
+  <div class="col">
+    <kendo-textbox-container floatingLabel="HTTPS Port">
+      <kendo-numerictextbox [(ngModel)]="website.sslPort" [min]="0" [format]="'n0'" required>
+      </kendo-numerictextbox>
+    </kendo-textbox-container>
+  </div>
+</div>
+<div class="row mb-2">
+  <div class="col">
+    <div>
+      <label>Register DNS Entry</label>
+    </div>
+    <kendo-switch [(ngModel)]="website.registerDns" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
   </div>
 </div>
 

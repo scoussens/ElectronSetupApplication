@@ -9,7 +9,7 @@ body {
   height: 100%;
 }
 
-.container {
+.root.container {
   margin-bottom: 59px;
 }
 
@@ -17,4 +17,15 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.is-invalid {
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 80%;
+  color: #dc3545;
+}
+
+.k-tabstrip {
+  height: 460px;
 }

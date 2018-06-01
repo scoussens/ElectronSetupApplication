@@ -13,14 +13,10 @@
     </div>
   </div>
   <div class="col" *ngIf="!platform.useAppPool">
-    <kendo-textbox-container floatingLabel="Username">
-      <input kendoTextBox [(ngModel)]="platform.platformUsername" />
-    </kendo-textbox-container>
+    <app-user-picker [(username)]="platform.platformUsername"></app-user-picker>
   </div>
   <div class="col" *ngIf="!platform.useAppPool">
-    <kendo-textbox-container floatingLabel="Password">
-      <input kendoTextBox type="password" [(ngModel)]="platform.platformPassword" />
-    </kendo-textbox-container>
+    <app-validated-password [username]="platform.platformUsername" [(password)]="platform.platformPassword"></app-validated-password>
   </div>
 </div>
 <div class="row mb-2">
@@ -39,14 +35,10 @@
   </div>
 
   <div class="col" *ngIf="!platform.rmUsePlatformAccount">
-    <kendo-textbox-container floatingLabel="Username">
-      <input kendoTextBox [(ngModel)]="platform.rmUsername" />
-    </kendo-textbox-container>
+    <app-user-picker [(username)]="platform.rmUsername"></app-user-picker>
   </div>
   <div class="col" *ngIf="!platform.rmUsePlatformAccount">
-    <kendo-textbox-container floatingLabel="Password">
-      <input kendoTextBox type="password" [(ngModel)]="platform.rmPassword" />
-    </kendo-textbox-container>
+    <app-validated-password [username]="platform.rmUsername" [(password)]="platform.rmPassword"></app-validated-password>
   </div>
 
 </div>
@@ -64,18 +56,19 @@
       <kendo-switch [(ngModel)]="platform.adUsePlatformAccount" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
     </div>
   </div>
-
   <div class="col" *ngIf="!platform.adUsePlatformAccount">
-    <kendo-textbox-container floatingLabel="Username">
-      <input kendoTextBox [(ngModel)]="platform.adUsername" />
-    </kendo-textbox-container>
+    <app-user-picker [(username)]="platform.adUsername"></app-user-picker>
   </div>
   <div class="col" *ngIf="!platform.adUsePlatformAccount">
-    <kendo-textbox-container floatingLabel="Password">
-      <input kendoTextBox type="password" [(ngModel)]="platform.adPassword" />
+    <app-validated-password [username]="platform.adUsername" [(password)]="platform.adPassword"></app-validated-password>
+  </div>
+</div>
+<div class="row mb-2">
+  <div class="col">
+    <kendo-textbox-container floatingLabel="Search Root">
+      <input kendoTextBox [(ngModel)]="platform.adRoot" />
     </kendo-textbox-container>
   </div>
-
 </div>
 <div class="row mb-2">
   <div class="col">
@@ -93,15 +86,11 @@
   </div>
 
   <div class="col" *ngIf="!platform.cmUsePlatformAccount">
-    <kendo-textbox-container floatingLabel="Username">
-      <input kendoTextBox [(ngModel)]="platform.cmUsername" />
-    </kendo-textbox-container>
+    <app-user-picker [(username)]="platform.cmUsername"></app-user-picker>
   </div>
   <div class="col" *ngIf="!platform.cmUsePlatformAccount">
-    <kendo-textbox-container floatingLabel="Password">
-      <input kendoTextBox type="password" [(ngModel)]="platform.cmPassword" />
-    </kendo-textbox-container>
+    <app-validated-password [username]="platform.cmUsername" [(password)]="platform.cmPassword"></app-validated-password>
   </div>
-  
+
 </div>
 

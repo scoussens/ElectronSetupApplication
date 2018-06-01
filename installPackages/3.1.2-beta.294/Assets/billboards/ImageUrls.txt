@@ -1,0 +1,7 @@
+Advanced Remote Support Tools.png,https://cireson.com/sccm-control-center?utm_source=installer&utm_medium=banner
+Analyst Portal.png,https://cireson.com/apps/analyst-portal?utm_source=installer&utm_medium=banner
+Community-Banner.png,https://community.cireson.com?utm_source=installer&utm_medium=banner
+Consulting Banner.png,https://cireson.com/cireson-services?utm_source=installer&utm_medium=banner
+Control Center Training.png,https://go2.cireson.com/af2?LinkID=CH00096971eR00000165AD&utm_source=installer&utm_medium=banner
+Training-Banner.png,https://cireson.com/cireson-services?utm_source=installer&utm_medium=banner
+Webinar-Banner.png,https://cireson.com/resources/#webinars?utm_source=installer&utm_medium=banner

@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col">
+    <h6>Hosting Service Account</h6>
+  </div>
+</div>
+<div class="row mb-2">
+  <div class="col">
+    <div>
+      <small>Use Local System</small>
+    </div>
+    <div>
+      <kendo-switch [(ngModel)]="cc.hostServiceLocalSystem" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+    </div>
+  </div>
+  <div class="col" *ngIf="!cc.hostServiceLocalSystem">
+    <app-user-picker [(username)]="cc.hostServiceUsername"></app-user-picker>
+  </div>
+  <div class="col" *ngIf="!cc.hostServiceLocalSystem">
+    <app-validated-password [username]="cc.hostServiceUsername" [(password)]="cc.hostServicePassword"></app-validated-password>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <h6>Service Configuration</h6>
+  </div>
+</div>
+<div class="row mb-2">
+  <div class="col">
+    <kendo-textbox-container floatingLabel="Deployment Service Port">
+      <kendo-numerictextbox [(ngModel)]="cc.deploymentServicePort" [min]="0" [format]="'n0'" required>
+      </kendo-numerictextbox>
+    </kendo-textbox-container>
+  </div>
+  <div class="col">
+    <kendo-textbox-container floatingLabel="Cache Service Port">
+      <kendo-numerictextbox [(ngModel)]="cc.cacheServicePort" [min]="0" [format]="'n0'" required>
+      </kendo-numerictextbox>
+    </kendo-textbox-container>
+  </div>
+</div>
+

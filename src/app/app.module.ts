@@ -27,6 +27,8 @@ import { AppRoutingModule } from './modules/routing.module';
 import { ConfigurationService } from './services/configuration.service';
 import { NavService } from './services/nav.service';
 import { PowershellService } from './services/powershell.service';
+import { ValidatedPasswordComponent } from './directives/validated-password/validated-password.component';
+import { ConfigurationCacheComponent } from './component/configuration/configuration-cache/configuration-cache.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { PowershellService } from './services/powershell.service';
     ConfigurationDatabasesComponent,
     ConfigurationPlatformComponent,
     ConfigurationWebsiteComponent,
-    GroupPickerComponent
+    GroupPickerComponent,
+    ValidatedPasswordComponent,
+    ConfigurationCacheComponent
   ],
   imports: [
     BrowserAnimationsModule,

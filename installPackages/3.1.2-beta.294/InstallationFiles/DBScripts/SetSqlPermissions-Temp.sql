@@ -1,0 +1,3 @@
+﻿USE [master]
+GRANT VIEW SERVER STATE TO [CIRESON\cm_service]
+GO

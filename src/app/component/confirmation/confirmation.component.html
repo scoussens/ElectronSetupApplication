@@ -1,8 +1,15 @@
 <div class="row">
   <div class="col">
-    <code>
-      {{config | json}}
-    </code>
+    <div *ngFor="let item of getKeys(settings)">
+      <h6>{{item.toUpperCase()}}</h6>
+      <table class="table table-borderless table-hover table-sm">
+        <tr *ngFor="let value of getKeys(settings[item])">
+          <td class="w-25">{{value}}</td>
+          <td>:</td>
+          <td>{{settings[item][value]}}</td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>
 <app-nav-bottom [linkNext]="linkNext" [linkPrev]="linkPrev"></app-nav-bottom>

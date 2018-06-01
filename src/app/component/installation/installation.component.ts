@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavLink } from '../../services/nav.service';
-import { PsCommandType, PsResult } from '../../services/powershell.models';
-import { PowershellService } from '../../services/powershell.service';
+import { ConfigurationService } from './../../services/configuration.service';
 import { NavService } from './../../services/nav.service';
 
 @Component({
@@ -14,50 +13,24 @@ export class InstallationComponent implements OnInit {
   linkNext: NavLink = null;
   linkPrev: NavLink = null;
   title = 'Configuration';
-  messages: PsResult[] = [];
+  messages: string[] = [];
 
-  constructor(private psService: PowershellService, private router: Router, private navService: NavService) {}
+  constructor(private cfgService: ConfigurationService, private router: Router, private navService: NavService) {}
 
   ngOnInit() {
   }
 
-  runStream() {
-    this.psService
-      .stream(PsCommandType.Script, "Test-Stream.ps1", [
-        { Number: 1 },
-        { Letter: "A" },
-        { Text: "Hello world." },
-        { ComputerName: "localhost" },
-        { InternetAddress: "http://www.google.com" }
-      ])
-      .subscribe(
-        data => this.messages.push(data.output),
-        err => {
-          console.log(err);
-        },
-        () => {
-          console.log('Installation completed.')
-          this.navService.enableParent('Complete');
-          this.router.navigate(['complete']);
-        }
-      );
-  }
+  runInstall() {
+    // save configuration to local storage
+    this.cfgService.saveConfig();
 
-  runError() {
-    this.psService
-      .stream(PsCommandType.Script, "Test-Error.ps1", [
-        { Number: 1 },
-        { Letter: "A" },
-        { Text: "Hello world." },
-        { ComputerName: "localhost" },
-        { InternetAddress: "http://www.google.com" }
-      ])
+    // run the installer script
+    this.cfgService
+      .installPortal()
       .subscribe(
         data => this.messages.push(data.output),
         err => {
           console.log(err);
-          this.messages.push(err.message);
-          this.messages.push(err.output);
         },
         () => {
           console.log('Installation completed.')

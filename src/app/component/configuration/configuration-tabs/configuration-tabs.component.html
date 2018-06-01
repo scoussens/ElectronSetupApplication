@@ -9,14 +9,19 @@
       <app-configuration-databases></app-configuration-databases>
     </ng-template>
   </kendo-tabstrip-tab>
-  <kendo-tabstrip-tab [title]="'Platform'">
-    <ng-template kendoTabContent>
-      <app-configuration-platform></app-configuration-platform>
-    </ng-template>
-  </kendo-tabstrip-tab>
   <kendo-tabstrip-tab [title]="'Website'">
     <ng-template kendoTabContent>
       <app-configuration-website></app-configuration-website>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab [title]="'Cache Service'">
+    <ng-template kendoTabContent>
+      <app-configuration-cache></app-configuration-cache>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab [title]="'Platform'">
+    <ng-template kendoTabContent>
+      <app-configuration-platform></app-configuration-platform>
     </ng-template>
   </kendo-tabstrip-tab>
 </kendo-tabstrip>

@@ -15,10 +15,10 @@ export class GroupPickerComponent implements OnInit {
   @Input()
   get groupname() { return this._groupname; }
 
-  @Output() usernameChange = new EventEmitter<string>();
+  @Output() groupnameChange = new EventEmitter<string>();
   set groupname(val) {
     this._groupname = val;
-    this.usernameChange.emit(this._groupname);
+    this.groupnameChange.emit(this._groupname);
   }
 
   constructor(private cfgService: ConfigurationService) { }
