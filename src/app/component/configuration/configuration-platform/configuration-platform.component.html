@@ -9,14 +9,14 @@
       <small>Use Application Pool</small>
     </div>
     <div>
-      <kendo-switch [(ngModel)]="platform.useAppPool" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+      <kendo-switch [(ngModel)]="platform.useAppPool.value" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
     </div>
   </div>
-  <div class="col" *ngIf="!platform.useAppPool">
-    <app-user-picker [(username)]="platform.platformUsername"></app-user-picker>
+  <div class="col" *ngIf="!platform.useAppPool.value">
+    <app-user-picker [(username)]="platform.platformUsername.value"></app-user-picker>
   </div>
-  <div class="col" *ngIf="!platform.useAppPool">
-    <app-validated-password [username]="platform.platformUsername" [(password)]="platform.platformPassword"></app-validated-password>
+  <div class="col" *ngIf="!platform.useAppPool.value">
+    <app-validated-password [username]="platform.platformUsername.value" [(password)]="platform.platformPassword.value"></app-validated-password>
   </div>
 </div>
 <div class="row mb-2">
@@ -30,15 +30,15 @@
       <small>Use Platform Account</small>
     </div>
     <div>
-      <kendo-switch [(ngModel)]="platform.rmUsePlatformAccount" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+      <kendo-switch [(ngModel)]="platform.rmUsePlatformAccount.value" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
     </div>
   </div>
 
-  <div class="col" *ngIf="!platform.rmUsePlatformAccount">
-    <app-user-picker [(username)]="platform.rmUsername"></app-user-picker>
+  <div class="col" *ngIf="!platform.rmUsePlatformAccount.value">
+    <app-user-picker [(username)]="platform.rmUsername.value"></app-user-picker>
   </div>
-  <div class="col" *ngIf="!platform.rmUsePlatformAccount">
-    <app-validated-password [username]="platform.rmUsername" [(password)]="platform.rmPassword"></app-validated-password>
+  <div class="col" *ngIf="!platform.rmUsePlatformAccount.value">
+    <app-validated-password [username]="platform.rmUsername.value" [(password)]="platform.rmPassword.value"></app-validated-password>
   </div>
 
 </div>
@@ -53,20 +53,20 @@
       <small>Use Platform Account</small>
     </div>
     <div>
-      <kendo-switch [(ngModel)]="platform.adUsePlatformAccount" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+      <kendo-switch [(ngModel)]="platform.adUsePlatformAccount.value" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
     </div>
   </div>
-  <div class="col" *ngIf="!platform.adUsePlatformAccount">
-    <app-user-picker [(username)]="platform.adUsername"></app-user-picker>
+  <div class="col" *ngIf="!platform.adUsePlatformAccount.value">
+    <app-user-picker [(username)]="platform.adUsername.value"></app-user-picker>
   </div>
-  <div class="col" *ngIf="!platform.adUsePlatformAccount">
-    <app-validated-password [username]="platform.adUsername" [(password)]="platform.adPassword"></app-validated-password>
+  <div class="col" *ngIf="!platform.adUsePlatformAccount.value">
+    <app-validated-password [username]="platform.adUsername.value" [(password)]="platform.adPassword.value"></app-validated-password>
   </div>
 </div>
 <div class="row mb-2">
   <div class="col">
     <kendo-textbox-container floatingLabel="Search Root">
-      <input kendoTextBox [(ngModel)]="platform.adRoot" />
+      <input kendoTextBox [(ngModel)]="platform.adRoot.value" />
     </kendo-textbox-container>
   </div>
 </div>
@@ -81,15 +81,15 @@
       <small>Use Platform Account</small>
     </div>
     <div>
-      <kendo-switch [(ngModel)]="platform.cmUsePlatformAccount" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+      <kendo-switch [(ngModel)]="platform.cmUsePlatformAccount.value" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
     </div>
   </div>
 
-  <div class="col" *ngIf="!platform.cmUsePlatformAccount">
-    <app-user-picker [(username)]="platform.cmUsername"></app-user-picker>
+  <div class="col" *ngIf="!platform.cmUsePlatformAccount.value">
+    <app-user-picker [(username)]="platform.cmUsername.value"></app-user-picker>
   </div>
-  <div class="col" *ngIf="!platform.cmUsePlatformAccount">
-    <app-validated-password [username]="platform.cmUsername" [(password)]="platform.cmPassword"></app-validated-password>
+  <div class="col" *ngIf="!platform.cmUsePlatformAccount.value">
+    <app-validated-password [username]="platform.cmUsername.value" [(password)]="platform.cmPassword.value"></app-validated-password>
   </div>
 
 </div>

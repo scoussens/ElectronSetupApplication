@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigurationService } from '../../../services/configuration.service';
+import { WebsiteSettings } from './../../../services/configuration.models';
 
 @Component({
   selector: 'app-configuration-website',
@@ -7,18 +8,7 @@ import { ConfigurationService } from '../../../services/configuration.service';
   styleUrls: ['./configuration-website.component.scss']
 })
 export class ConfigurationWebsiteComponent implements OnInit {
-  website: { 
-    appPoolUser: string; 
-    appPoolPassword: string; 
-    adminGroup: string; 
-    installDir: string; 
-    siteName: string; 
-    hostName: string; 
-    sitePort: number; 
-    sslPort: number; 
-    sslCert: string; 
-    registerDns: boolean; 
-  };
+  website: WebsiteSettings;
 
   constructor(private configService: ConfigurationService) { }
 

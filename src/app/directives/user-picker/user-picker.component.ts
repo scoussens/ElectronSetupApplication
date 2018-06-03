@@ -3,7 +3,8 @@ import { AutoCompleteComponent } from '@progress/kendo-angular-dropdowns';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/switchMap';
-import { ConfigurationService, User } from '../../services/configuration.service';
+import { User } from '../../services/configuration.models';
+import { ConfigurationService } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-user-picker',

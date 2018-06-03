@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { AutoCompleteComponent } from '@progress/kendo-angular-dropdowns';
-import { ConfigurationService, Group } from './../../services/configuration.service';
+import { Group } from '../../services/configuration.models';
+import { ConfigurationService } from './../../services/configuration.service';
 
 @Component({
   selector: 'app-group-picker',

@@ -5,15 +5,15 @@
 </div>
 <div class="row mb-2">
   <div class="col">
-    <app-user-picker [(username)]="website.appPoolUser"></app-user-picker>
+    <app-user-picker [(username)]="website.appPoolUser.value"></app-user-picker>
   </div>
   <div class="col">
-    <app-validated-password [username]="website.appPoolUser" [(password)]="website.appPoolPassword"></app-validated-password>
+    <app-validated-password [username]="website.appPoolUser.value" [(password)]="website.appPoolPassword.value"></app-validated-password>
   </div>
 </div>
 <div class="row mb-2">
   <div class="col">
-    <app-group-picker [(groupname)]="website.adminGroup"></app-group-picker>
+    <app-group-picker [(groupname)]="website.adminGroup.value"></app-group-picker>
   </div>
 </div>
 <div class="row">
@@ -24,24 +24,24 @@
 <div class="row mb-2">
   <div class="col">
     <kendo-textbox-container floatingLabel="Install Directory">
-      <input kendoTextBox [(ngModel)]="website.installDir" />
+      <input kendoTextBox [(ngModel)]="website.installDir.value" />
     </kendo-textbox-container>
   </div>
   <div class="col">
     <kendo-textbox-container floatingLabel="Site Name">
-      <input kendoTextBox [(ngModel)]="website.siteName" />
+      <input kendoTextBox [(ngModel)]="website.siteName.value" />
     </kendo-textbox-container>
   </div>
 </div>
 <div class="row mb-2">
   <div class="col">
     <kendo-textbox-container floatingLabel="Host Name">
-      <input kendoTextBox [(ngModel)]="website.hostName" />
+      <input kendoTextBox [(ngModel)]="website.hostName.value" />
     </kendo-textbox-container>
   </div>
   <div class="col">
     <kendo-textbox-container floatingLabel="HTTP Port">
-      <kendo-numerictextbox [(ngModel)]="website.sitePort" [min]="0" [format]="'n0'" required>
+      <kendo-numerictextbox [(ngModel)]="website.sitePort.value" [min]="0" [format]="'n0'" required>
       </kendo-numerictextbox>
     </kendo-textbox-container>
   </div>
@@ -49,12 +49,12 @@
 <div class="row mb-2">
   <div class="col">
     <kendo-textbox-container floatingLabel="SSL Certificate">
-      <input kendoTextBox [(ngModel)]="website.sslCert" />
+      <input kendoTextBox [(ngModel)]="website.sslCert.value" />
     </kendo-textbox-container>
   </div>
   <div class="col">
     <kendo-textbox-container floatingLabel="HTTPS Port">
-      <kendo-numerictextbox [(ngModel)]="website.sslPort" [min]="0" [format]="'n0'" required>
+      <kendo-numerictextbox [(ngModel)]="website.sslPort.value" [min]="0" [format]="'n0'" required>
       </kendo-numerictextbox>
     </kendo-textbox-container>
   </div>
@@ -64,7 +64,7 @@
     <div>
       <label>Register DNS Entry</label>
     </div>
-    <kendo-switch [(ngModel)]="website.registerDns" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+    <kendo-switch [(ngModel)]="website.registerDns.value" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
   </div>
 </div>
 

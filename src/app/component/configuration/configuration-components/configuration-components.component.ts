@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ComponentSettings } from './../../../services/configuration.models';
 import { ConfigurationService } from './../../../services/configuration.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { ConfigurationService } from './../../../services/configuration.service'
   styleUrls: ['./configuration-components.component.scss']
 })
 export class ConfigurationComponentsComponent implements OnInit {
-  components: { installAll: boolean; installDb: boolean; installWebsite: boolean; installServices: boolean; installMdt: boolean; installSsrs: boolean; };
+  components: ComponentSettings;
 
   constructor(private configService: ConfigurationService) { }
 

@@ -6,19 +6,19 @@
 <div class="row mb-2">
   <div class="col">
     <kendo-textbox-container floatingLabel="Database Server Name">
-      <input kendoTextBox [(ngModel)]="cm.dbServerName" />
+      <input kendoTextBox [(ngModel)]="cm.dbServerName.value" />
     </kendo-textbox-container>
   </div>
   <div class="col">
     <kendo-textbox-container floatingLabel="Site Server Name">
-      <input kendoTextBox [(ngModel)]="cm.siteServerName" />
+      <input kendoTextBox [(ngModel)]="cm.siteServerName.value" />
     </kendo-textbox-container>
   </div>
 </div>
 <div class="row mb-2">
   <div class="col">
     <kendo-textbox-container floatingLabel="Database Name">
-      <input kendoTextBox [(ngModel)]="cm.dbName" />
+      <input kendoTextBox [(ngModel)]="cm.dbName.value" />
     </kendo-textbox-container>
   </div>
   <div class="col">
@@ -26,19 +26,19 @@
       <small>Windows Authentication</small>
     </div>
     <div>
-      <kendo-switch #cmDbUseWinAuth [(ngModel)]="cm.dbUseNtAuth" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+      <kendo-switch #cmDbUseWinAuth [(ngModel)]="cm.dbUseNtAuth.value" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
     </div>
   </div>
 </div>
-<div class="row mb-2" *ngIf="!cm.dbUseNtAuth">
+<div class="row mb-2" *ngIf="!cm.dbUseNtAuth.value">
   <div class="col">
     <kendo-textbox-container floatingLabel="SQL Username">
-      <input kendoTextBox [(ngModel)]="cm.dbSqlUsername" />
+      <input kendoTextBox [(ngModel)]="cm.dbSqlUsername.value" />
     </kendo-textbox-container>
   </div>
   <div class="col">
     <kendo-textbox-container floatingLabel="SQL Password">
-      <input kendoTextBox type="password" [(ngModel)]="cm.dbSqlPassword" />
+      <input kendoTextBox type="password" [(ngModel)]="cm.dbSqlPassword.value" />
     </kendo-textbox-container>
   </div>
 </div>
@@ -50,14 +50,14 @@
 <div class="row mb-2">
   <div class="col">
     <kendo-textbox-container floatingLabel="Database Server Name">
-      <input kendoTextBox [(ngModel)]="cc.dbServerName" />
+      <input kendoTextBox [(ngModel)]="cc.dbServerName.value" />
     </kendo-textbox-container>
   </div>
 </div>
 <div class="row mb-2">
   <div class="col">
     <kendo-textbox-container floatingLabel="Database Name">
-      <input kendoTextBox [(ngModel)]="cc.dbName" />
+      <input kendoTextBox [(ngModel)]="cc.dbName.value" />
     </kendo-textbox-container>
   </div>
   <div class="col">
@@ -65,19 +65,19 @@
       <small>Windows Authentication</small>
     </div>
     <div>
-      <kendo-switch #cmDbUseWinAuth [(ngModel)]="cc.dbUseNtAuth" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+      <kendo-switch #cmDbUseWinAuth [(ngModel)]="cc.dbUseNtAuth.value" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
     </div>
   </div>
 </div>
-<div class="row mb-2" *ngIf="!cc.dbUseNtAuth">
+<div class="row mb-2" *ngIf="!cc.dbUseNtAuth.value">
   <div class="col">
     <kendo-textbox-container floatingLabel="SQL Username">
-      <input kendoTextBox [(ngModel)]="cc.dbSqlUsername" />
+      <input kendoTextBox [(ngModel)]="cc.dbSqlUsername.value" />
     </kendo-textbox-container>
   </div>
   <div class="col">
     <kendo-textbox-container floatingLabel="SQL Password">
-      <input kendoTextBox type="password" [(ngModel)]="cc.dbSqlPassword" />
+      <input kendoTextBox type="password" [(ngModel)]="cc.dbSqlPassword.value" />
     </kendo-textbox-container>
   </div>
 </div>

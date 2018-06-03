@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ControlCenterSettings } from './../../../services/configuration.models';
 import { ConfigurationService } from './../../../services/configuration.service';
 
 @Component({
@@ -7,23 +8,11 @@ import { ConfigurationService } from './../../../services/configuration.service'
   styleUrls: ['./configuration-cache.component.scss']
 })
 export class ConfigurationCacheComponent implements OnInit {
-  cc: { 
-    licenseKey: string; 
-    dbServerName: string; 
-    dbName: string; 
-    dbUseNtAuth: boolean; 
-    dbSqlUsername: string; 
-    dbSqlPassword: string; 
-    hostServiceLocalSystem: boolean; 
-    hostServiceUsername: string; 
-    hostServicePassword: string; 
-    deploymentServicePort: number; 
-    cacheServicePort: number; };
+  cc: ControlCenterSettings;
 
   constructor(private cfgService: ConfigurationService) { }
 
   ngOnInit() {
     this.cc = this.cfgService.settings.cc;
   }
-
 }

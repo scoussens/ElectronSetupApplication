@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigurationService } from '../../../services/configuration.service';
+import { PlatformSettings } from './../../../services/configuration.models';
 
 @Component({
   selector: 'app-configuration-platform',
@@ -7,21 +8,7 @@ import { ConfigurationService } from '../../../services/configuration.service';
   styleUrls: ['./configuration-platform.component.scss']
 })
 export class ConfigurationPlatformComponent implements OnInit {
-  platform: { 
-    useAppPool: boolean; 
-    platformUsername: string; 
-    platformPassword: string; 
-    rmUsePlatformAccount: boolean; 
-    rmUsername: string; 
-    rmPassword: string; 
-    cmUsePlatformAccount: boolean; 
-    cmUsername: string; 
-    cmPassword: string; 
-    adUsePlatformAccount: boolean; 
-    adUsername: string; 
-    adPassword: string; 
-    adRoot: string; 
-  };
+  platform: PlatformSettings;
 
   constructor(private configService: ConfigurationService) { }
 

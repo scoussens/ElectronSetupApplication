@@ -1,3 +1,4 @@
+import { ConfigMgrSettings, WebsiteSettings } from './configuration.models';
 export interface User {
     cn: string,
     displayName: string,
@@ -11,7 +12,7 @@ export interface Group {
 }
 
 export interface SettingGroup {
-    [key: string]: SettingItem
+    [key: string]: any
 }
 
 export interface SettingItem {
@@ -21,67 +22,89 @@ export interface SettingItem {
 }
 
 export interface ConfigurationSettings {
-    components: SettingGroup
-    cm: {
-        siteServerName: string
-        dbServerName: string
-        dbName: string
-        dbUseNtAuth: boolean
-        dbSqlUsername: string
-        dbSqlPassword: string
-    }
-    cc: {
-        licenseKey: string
-        dbServerName: string
-        dbName: string
-        dbUseNtAuth: boolean
-        dbSqlUsername: string
-        dbSqlPassword: string
-        hostServiceLocalSystem: boolean
-        hostServiceUsername: string
-        hostServicePassword: string
-        deploymentServicePort: number
-        cacheServicePort: number
-    }
-    platform: {
-        useAppPool: boolean
-        platformUsername: string
-        platformPassword: string
-        rmUsePlatformAccount: boolean
-        rmUsername: string
-        rmPassword: string
-        cmUsePlatformAccount: boolean
-        cmUsername: string
-        cmPassword: string
-        adUsePlatformAccount: boolean
-        adUsername: string
-        adPassword: string
-        adRoot: string
-    }
-    ssrs: {
-        dbServerName: string
-        dbName: string
-        dbUseNtAuth: boolean
-        dbSqlUsername: string
-        dbSqlPassword: string
-    }
-    mdt: {
-        dbServerName: string
-        dbName: string
-        dbUseNtAuth: boolean
-        dbSqlUsername: string
-        dbSqlPassword: string
-    }
-    website: {
-        appPoolUser: string
-        appPoolPassword: string
-        adminGroup: string
-        installDir: string
-        siteName: string
-        hostName: string
-        sitePort: number
-        sslPort: number
-        sslCert: string
-        registerDns: boolean
-    }
+    version: string
+    components: ComponentSettings
+    cm: ConfigMgrSettings
+    cc: ControlCenterSettings
+    platform: PlatformSettings
+    ssrs: SsrsSettings
+    mdt: MdtSettings
+    website: WebsiteSettings
+}
+
+export interface ComponentSettings extends SettingGroup {
+    installAll: SettingItem
+    installDb: SettingItem
+    installWebsite: SettingItem
+    installServices: SettingItem
+    installMdt: SettingItem
+    installSsrs: SettingItem
+}
+
+export interface ConfigMgrSettings extends SettingGroup {
+    siteServerName: SettingItem
+    dbServerName: SettingItem
+    dbName: SettingItem
+    dbUseNtAuth: SettingItem
+    dbSqlUsername: SettingItem
+    dbSqlPassword: SettingItem
+}
+
+export interface ControlCenterSettings extends SettingGroup {
+    licenseKey: SettingItem
+    dbServerName: SettingItem
+    dbName: SettingItem
+    dbUseNtAuth: SettingItem
+    dbSqlUsername: SettingItem
+    dbSqlPassword: SettingItem
+    hostServiceLocalSystem: SettingItem
+    hostServiceUsername: SettingItem
+    hostServicePassword: SettingItem
+    deploymentServicePort: SettingItem
+    cacheServicePort: SettingItem
+}
+
+export interface PlatformSettings extends SettingGroup {
+    useAppPool: SettingItem
+    platformUsername: SettingItem
+    platformPassword: SettingItem
+    rmUsePlatformAccount: SettingItem
+    rmUsername: SettingItem
+    rmPassword: SettingItem
+    cmUsePlatformAccount: SettingItem
+    cmUsername: SettingItem
+    cmPassword: SettingItem
+    adUsePlatformAccount: SettingItem
+    adUsername: SettingItem
+    adPassword: SettingItem
+    adRoot: SettingItem
+}
+
+export interface SsrsSettings extends SettingGroup {
+    dbServerName: SettingItem
+    dbName: SettingItem
+    dbUseNtAuth: SettingItem
+    dbSqlUsername: SettingItem
+    dbSqlPassword: SettingItem
+}
+
+export interface MdtSettings extends SettingGroup {
+    dbServerName: SettingItem
+    dbName: SettingItem
+    dbUseNtAuth: SettingItem
+    dbSqlUsername: SettingItem
+    dbSqlPassword: SettingItem
+}
+
+export interface WebsiteSettings extends SettingGroup {
+    appPoolUser: SettingItem
+    appPoolPassword: SettingItem
+    adminGroup: SettingItem
+    installDir: SettingItem
+    siteName: SettingItem
+    hostName: SettingItem
+    sitePort: SettingItem
+    sslPort: SettingItem
+    sslCert: SettingItem
+    registerDns: SettingItem
 }

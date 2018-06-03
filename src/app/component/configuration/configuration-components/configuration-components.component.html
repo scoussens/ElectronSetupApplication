@@ -3,16 +3,16 @@
     <label>Install All Components</label>
   </div>
   <div class="col">
-    <kendo-switch [(ngModel)]="components.installAll" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+    <kendo-switch [(ngModel)]="components.installAll.value" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
   </div>
 </div>
-<div *ngIf="!components.installAll">
+<div *ngIf="!components.installAll.value">
   <div class="row mb-2 mt-2">
     <div class="col-sm-4">
       <label>Install Database</label>
     </div>
     <div class="col">
-      <kendo-switch [(ngModel)]="components.installDb" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+      <kendo-switch [(ngModel)]="components.installDb.value" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
     </div>
   </div>
   <div class="row mb-2 mt-2">
@@ -20,7 +20,7 @@
       <label>Install Website</label>
     </div>
     <div class="col">
-      <kendo-switch [(ngModel)]="components.installWebsite" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+      <kendo-switch [(ngModel)]="components.installWebsite.value" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
     </div>
   </div>
   <div class="row mb-2 mt-2">
@@ -28,7 +28,7 @@
       <label>Install Services</label>
     </div>
     <div class="col">
-      <kendo-switch [(ngModel)]="components.installServices" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+      <kendo-switch [(ngModel)]="components.installServices.value" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
     </div>
   </div>
   <div class="row mb-2 mt-2">
@@ -36,7 +36,7 @@
       <label>Install MDT</label>
     </div>
     <div class="col">
-      <kendo-switch [(ngModel)]="components.installMdt" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+      <kendo-switch [(ngModel)]="components.installMdt.value" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
     </div>
   </div>
   <div class="row mb-2 mt-2">
@@ -44,7 +44,7 @@
       <label>Install SSRS</label>
     </div>
     <div class="col">
-      <kendo-switch [(ngModel)]="components.installSsrs" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+      <kendo-switch [(ngModel)]="components.installSsrs.value" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
     </div>
   </div>
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigurationService } from '../../services/configuration.service';
-import { ConfigurationSettings } from './../../services/configuration.service';
+import { ConfigurationSettings } from './../../services/configuration.models';
 import { NavLink, NavService } from './../../services/nav.service';
 
 @Component({

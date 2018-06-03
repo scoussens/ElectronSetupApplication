@@ -8,10 +8,11 @@ import { PowershellService } from './powershell.service';
 })
 export class ConfigurationService {
   settings: ConfigurationSettings = {
+    version: '0.0.1',
     components: {
       installAll: {
         displayName: 'Install All Components',
-        paramaterName: 'installAll',
+        paramaterName: null,
         value: true
       },
       installDb: {
@@ -41,66 +42,266 @@ export class ConfigurationService {
       }
     },
     cm: {
-      siteServerName: null,
-      dbServerName: null,
-      dbName: null,
-      dbUseNtAuth: true,
-      dbSqlUsername: null,
-      dbSqlPassword: null
+      siteServerName: {
+        displayName: 'Site Server Name',
+        paramaterName: 'ConfigMgrSiteServer',
+        value: ''
+      },
+      dbServerName: {
+        displayName: 'Database Server',
+        paramaterName: 'ConfigMgrSqlServer',
+        value: ''
+      },
+      dbName: {
+        displayName: 'Database Name',
+        paramaterName: 'ConfigMgrDatabaseName',
+        value: ''
+      },
+      dbUseNtAuth: {
+        displayName: 'Use Windows Auth',
+        paramaterName: 'ConfigMgrDbUseWinAuth',
+        value: true
+      },
+      dbSqlUsername: {
+        displayName: 'SQL Username',
+        paramaterName: 'ConfigMgrSqlLogin',
+        value: null
+      },
+      dbSqlPassword: {
+        displayName: 'SQL Password',
+        paramaterName: 'ConfigMgrSqlPasswordHash',
+        value: null
+      }
     },
     cc: {
-      licenseKey: null,
-      dbServerName: null,
-      dbName: 'ControlCenter',
-      dbUseNtAuth: true,
-      dbSqlUsername: null,
-      dbSqlPassword: null,
-      hostServiceLocalSystem: false,
-      hostServiceUsername: null,
-      hostServicePassword: null,
-      deploymentServicePort: 8080,
-      cacheServicePort: 8081
+      licenseKey: {
+        displayName: 'License Key',
+        paramaterName: 'LicenseKey',
+        value: ''
+      },
+      dbServerName: {
+        displayName: 'Database Server',
+        paramaterName: 'CmpSqlServer',
+        value: null
+      },
+      dbName: {
+        displayName: 'Database Name',
+        paramaterName: 'CmpDatabaseName',
+        value: null
+      },
+      dbUseNtAuth: {
+        displayName: 'Use Win Auth',
+        paramaterName: 'CmpDbUseWinAuth',
+        value: true
+      },
+      dbSqlUsername: {
+        displayName: 'SQL Username',
+        paramaterName: 'CmpSqlLogin',
+        value: null
+      },
+      dbSqlPassword: {
+        displayName: 'SQL Password',
+        paramaterName: 'CmpSqlPasswordHash',
+        value: null
+      },
+      hostServiceLocalSystem: {
+        displayName: 'Use Win Auth',
+        paramaterName: 'UseLocalSystemAsServiceAccount',
+        value: true
+      },
+      hostServiceUsername: {
+        displayName: 'Host Service Username',
+        paramaterName: 'ServiceUser',
+        value: null
+      },
+      hostServicePassword: {
+        displayName: 'Host Service Password',
+        paramaterName: 'ServicePassword',
+        value: null
+      },
+      deploymentServicePort: {
+        displayName: 'Deployment Service Port',
+        paramaterName: 'DeploymentServicePort',
+        value: 8080
+      },
+      cacheServicePort: {
+        displayName: 'Cache Service Port',
+        paramaterName: 'CacheServicePort',
+        value: 8081
+      }
     },
     platform: {
-      useAppPool: false,
-      platformUsername: null,
-      platformPassword: null,
-      rmUsePlatformAccount: false,
-      rmUsername: null,
-      rmPassword: null,
-      cmUsePlatformAccount: false,
-      cmUsername: null,
-      cmPassword: null,
-      adUsePlatformAccount: false,
-      adUsername: null,
-      adPassword: null,
-      adRoot: null
+      useAppPool: {
+        displayName: 'Use App Pool Account',
+        paramaterName: 'UseAppPoolAsPlatformServiceAccount',
+        value: true
+      },
+      platformUsername: {
+        displayName: 'Platform Username',
+        paramaterName: 'PlatformServiceUser',
+        value: null
+      },
+      platformPassword: {
+        displayName: 'Platform Password',
+        paramaterName: 'PlatformServicePassword',
+        value: null
+      },
+      rmUsePlatformAccount: {
+        displayName: 'Use Platform Account',
+        paramaterName: 'UseWinAuthForRemoteManage',
+        value: true
+      },
+      rmUsername: {
+        displayName: 'WinRM Username',
+        paramaterName: 'RemoteManageServiceUser',
+        value: null
+      },
+      rmPassword: {
+        displayName: 'WinRM Password',
+        paramaterName: 'RemoteManageServicePassword',
+        value: null
+      },
+      cmUsePlatformAccount: {
+        displayName: 'Use Platform Account',
+        paramaterName: 'UsePlatformServiceAccountForConfigMgr',
+        value: true
+      },
+      cmUsername: {
+        displayName: 'ConfigMgr Username',
+        paramaterName: 'PlatformConfigMgrServiceUser',
+        value: null
+      },
+      cmPassword: {
+        displayName: 'ConfigMgr Password',
+        paramaterName: 'PlatformConfigMgrServicePassword',
+        value: null
+      },
+      adUsePlatformAccount: {
+        displayName: 'Use Platform Account',
+        paramaterName: 'UsePlatformServiceAccountForAdSync',
+        value: true
+      },
+      adUsername: {
+        displayName: 'AD Username',
+        paramaterName: 'AdSyncUser',
+        value: null
+      },
+      adPassword: {
+        displayName: 'AD Password',
+        paramaterName: 'AdSyncPassword',
+        value: null
+      },
+      adRoot: {
+        displayName: 'AD Search Root',
+        paramaterName: 'Ldap',
+        value: 'LDAP://DC=cireson,DC=com'
+      }
     },
     ssrs: {
-      dbServerName: null,
-      dbName: null,
-      dbUseNtAuth: true,
-      dbSqlUsername: null,
-      dbSqlPassword: null
+      dbServerName: {
+        displayName: 'Database Server',
+        paramaterName: 'SsrsServerName',
+        value: ''
+      },
+      dbName: {
+        displayName: 'Database Name',
+        paramaterName: 'SsrsDatabaseName',
+        value: ''
+      },
+      dbUseNtAuth: {
+        displayName: 'Use Win Auth',
+        paramaterName: 'SsrsDbUseWinAuth',
+        value: true
+      },
+      dbSqlUsername: {
+        displayName: '',
+        paramaterName: 'SsrsSqlLogin',
+        value: null
+      },
+      dbSqlPassword: {
+        displayName: '',
+        paramaterName: 'SsrsSqlPasswordHash',
+        value: null
+      }
     },
     mdt: {
-      dbServerName: null,
-      dbName: null,
-      dbUseNtAuth: true,
-      dbSqlUsername: null,
-      dbSqlPassword: null
+      dbServerName: {
+        displayName: 'Database Server',
+        paramaterName: 'MdtSqlServer',
+        value: ''
+      },
+      dbName: {
+        displayName: 'Database Name',
+        paramaterName: 'MdtDatabaseName',
+        value: ''
+      },
+      dbUseNtAuth: {
+        displayName: 'Use Win Auth',
+        paramaterName: 'MdtDbUseWinAuth',
+        value: true
+      },
+      dbSqlUsername: {
+        displayName: 'SQL Username',
+        paramaterName: 'MdtSqlLogin',
+        value: ''
+      },
+      dbSqlPassword: {
+        displayName: 'SQL Password',
+        paramaterName: 'MdtSqlPasswordHash',
+        value: ''
+      }
     },
     website: {
-      appPoolUser: null,
-      appPoolPassword: null,
-      adminGroup: null,
-      installDir: "C:\\InetPub\\",
-      siteName: 'ControlCenter',
-      hostName: null,
-      sitePort: 80,
-      sslPort: 443,
-      sslCert: null,
-      registerDns: false
+      appPoolUser: {
+        displayName: 'Application Pool Account',
+        paramaterName: 'AppPoolUser',
+        value: null
+      },
+      appPoolPassword: {
+        displayName: 'App Pool Password',
+        paramaterName: 'AppPoolPassword',
+        value: null
+      },
+      adminGroup: {
+        displayName: 'Control Center Admin Group',
+        paramaterName: 'CmpAdminGroup',
+        value: null
+      },
+      installDir: {
+        displayName: 'Install Directory',
+        paramaterName: 'SiteRootPath',
+        value: 'C:\\InetPub\\'
+      },
+      siteName: {
+        displayName: 'Site Name',
+        paramaterName: 'SiteName',
+        value: 'ControlCenter'
+      },
+      hostName: {
+        displayName: 'Hostname',
+        paramaterName: 'Hostname',
+        value: null
+      },
+      sitePort: {
+        displayName: 'HTTP Port',
+        paramaterName: 'SitePort',
+        value: 80
+      },
+      sslPort: {
+        displayName: 'SSL Port',
+        paramaterName: 'HttpsListenerPort',
+        value: 443
+      },
+      sslCert: {
+        displayName: '',
+        paramaterName: 'SSLCertificateName',
+        value: null
+      },
+      registerDns: {
+        displayName: 'Register Hostname with DNS',
+        paramaterName: 'AddHostNameToDns',
+        value: false
+      }
     }
   };
 
@@ -109,8 +310,8 @@ export class ConfigurationService {
   }
 
   loadConfig() {
-    let config = JSON.parse(localStorage.getItem('settings'));
-    if (config) {
+    let config: ConfigurationSettings = JSON.parse(localStorage.getItem('settings'));
+    if (config && config.version === this.settings.version) {
       this.settings = config;
     }
   }
@@ -136,84 +337,49 @@ export class ConfigurationService {
   }
 
   installPortal() {
-    return this.ps.stream<string>(PsCommandType.Script, 'Install-Portal.ps1', [
-      { ConfigMgrSiteServer: this.settings.cm.siteServerName },
-      { ConfigMgrSqlServer: this.settings.cm.dbServerName },
-      { ConfigMgrDatabaseName: this.settings.cm.dbName },
-      { SiteRootPath: this.settings.website.installDir },
-      { SiteName: this.settings.website.siteName },
-      { SitePort: this.settings.website.sitePort },
-      { AppPoolUser: this.settings.website.appPoolUser },
-      { AppPoolPassword: this.settings.website.appPoolPassword },
-      { ServiceUser: this.settings.cc.hostServiceUsername },
-      { ServicePassword: this.settings.cc.hostServicePassword },
-      { ApplicationTitle: "Control Center" },
+    // for future use to configure default parameters
+    let defaultParams: PsParameter[] = [
+      // { ApplicationTitle: "Control Center" },
       // { LanguageCode: "ENU" },
       // { LanguageCodeDateTime: "ENU" },
-      { CmpSqlServer: this.settings.cc.dbServerName },
-      { CmpDatabaseName: this.settings.cc.dbName },
-      { InstallWebsite: this.settings.components.installWebsite },
-      { InstallDatabase: this.settings.components.installDb },
-      { InstallServices: this.settings.components.installServices },
       // { LogFilePath: null },
       // { CacheLanguageCodes: "*" },
-      { AcceptEula: true },
-      { SSLCertificateName: this.settings.website.sslCert },
-      { LicenseKey: this.settings.cc.licenseKey },
-      { CmpAdminGroup: this.settings.website.adminGroup },
-      { EnableMdtIntegration: this.settings.components.installMdt },
-      { ConfigMgrSqlLogin: this.settings.cm.dbSqlUsername },
-      { ConfigMgrSqlPasswordHash: this.settings.cm.dbSqlPassword },
-      { ConfigMgrDbUseWinAuth: this.settings.cm.dbUseNtAuth },
-      { CmpDbUseWinAuth: this.settings.cc.dbUseNtAuth },
-      { MdtDbUseWinAuth: this.settings.mdt.dbUseNtAuth },
-      { CmpSqlLogin: this.settings.cc.dbSqlUsername },
-      { CmpSqlPasswordHash: this.settings.cc.dbSqlPassword },
-      { MdtSqlLogin: this.settings.mdt.dbSqlUsername },
-      { MdtSqlPasswordHash: this.settings.mdt.dbSqlPassword },
-      { MdtSqlServer: this.settings.mdt.dbServerName },
-      { MdtDatabaseName: this.settings.mdt.dbName },
+      // { AcceptEula: true },
+      // { IsUpgradeScenario: false },
+      // { IsSql2014OrGreater: false },
       // { CustomerKey: "" },
-      { DeploymentServicePort: this.settings.cc.deploymentServicePort },
-      { CacheServicePort: this.settings.cc.cacheServicePort },
-      { UseLocalSystemAsServiceAccount: this.settings.cc.hostServiceLocalSystem },
-      { IsSql2014OrGreater: false },
-      { Hostname: this.settings.website.hostName },
-      { SsrsServerName: this.settings.ssrs.dbServerName },
-      { SsrsDbUseWinAuth: this.settings.ssrs.dbUseNtAuth },
-      { SsrsSqlLogin: this.settings.ssrs.dbSqlUsername },
-      { SsrsDatabaseName: this.settings.ssrs.dbName },
-      { SsrsSqlPasswordHash: this.settings.ssrs.dbSqlPassword },
-      { IsUpgradeScenario: false },
-      { EnableSsrsIntegration: this.settings.components.installSsrs },
-      { PlatformServiceUser: this.settings.platform.platformUsername },
-      { PlatformServicePassword: this.settings.platform.platformPassword },
       // { PlatformServicePort: null },
       // { PlatformServiceUrl: '*' },
       // { PlatformCPEXAppVersion: null },
-      { PlatformLogLevel: "500" },
-      { UseAppPoolAsPlatformServiceAccount: this.settings.platform.useAppPool },
-      { PlatformConfigMgrServiceUser: this.settings.platform.cmUsername },
-      { PlatformConfigMgrServicePassword: this.settings.platform.cmPassword },
-      { UseWinAuthForRemoteManage: this.settings.platform.rmUsePlatformAccount },
-      { RemoteManageServiceUser: this.settings.platform.rmUsername },
-      { RemoteManageServicePassword: this.settings.platform.rmPassword },
-      { UsePlatformServiceAccountForConfigMgr: this.settings.platform.cmUsePlatformAccount },
-      { UsePlatformServiceAccountForAdSync: this.settings.platform.adUsePlatformAccount },
-      { AdSyncUser: this.settings.platform.adUsername },
-      { AdSyncPassword: this.settings.platform.adPassword },
-      { Ldap: this.settings.platform.adRoot },
-      { AddHostNameToDns: this.settings.website.registerDns },
-      { HttpsListenerPort: this.settings.website.sslPort }
-    ]);
+    ];
+
+    let params: PsParameter[] = [];
+    Object.keys(this.settings).forEach(key => {
+      let settingGroup = this.settings[key];
+      let settingParams = this.buildParamaterArrayFromObject(settingGroup);
+      params = params.concat(settingParams)
+    });
+    
+    let allParams = params.concat(defaultParams)
+    return this.ps.stream<string>(PsCommandType.Script, 'Install-Portal.ps1', allParams);
   }
 
-  private buildParamaterArray(obj: SettingGroup) {
+  // builds a paramater array, removing any properties that are null or empty
+  private buildParamaterArrayFromObject(obj: SettingGroup) {
     let paramArray: PsParameter[] = [];
+
     Object.keys(obj).forEach(key => {
-      if(obj[key].value !== null) {
-        paramArray.push({})
+      let setting = obj[key];
+      if (!setting.paramaterName || !setting.value || String(setting.value).trim().length === 0) {
+        return;
       }
+
+      let param = {};
+      param[setting.paramaterName] = setting.value;
+
+      paramArray.push(param)
     })
+
+    return paramArray;
   }
 }

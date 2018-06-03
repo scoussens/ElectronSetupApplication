@@ -4,9 +4,9 @@
       <h6>{{item.toUpperCase()}}</h6>
       <table class="table table-borderless table-hover table-sm">
         <tr *ngFor="let value of getKeys(settings[item])">
-          <td class="w-25">{{value}}</td>
+          <td class="w-25">{{settings[item][value].displayName}}</td>
           <td>:</td>
-          <td>{{settings[item][value]}}</td>
+          <td>{{settings[item][value].value}}</td>
         </tr>
       </table>
     </div>

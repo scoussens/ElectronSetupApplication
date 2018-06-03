@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigMgrSettings, ControlCenterSettings } from './../../../services/configuration.models';
 import { ConfigurationService } from './../../../services/configuration.service';
 
 @Component({
@@ -7,27 +8,8 @@ import { ConfigurationService } from './../../../services/configuration.service'
   styleUrls: ['./configuration-databases.component.scss']
 })
 export class ConfigurationDatabasesComponent implements OnInit {
-  cm: { 
-    siteServerName: string; 
-    dbServerName: string; 
-    dbName: string; 
-    dbUseNtAuth: boolean; 
-    dbSqlUsername: string; 
-    dbSqlPassword: string; 
-  };
-  cc: { 
-    licenseKey: string; 
-    dbServerName: string; 
-    dbName: string; 
-    dbUseNtAuth: boolean; 
-    dbSqlUsername: string; 
-    dbSqlPassword: string; 
-    hostServiceLocalSystem: boolean; 
-    hostServiceUsername: string; 
-    hostServicePassword: string; 
-    deploymentServicePort: number; 
-    cacheServicePort: number; 
-  };
+  cm: ConfigMgrSettings;
+  cc: ControlCenterSettings;
 
 
   constructor(private configService: ConfigurationService) { }
