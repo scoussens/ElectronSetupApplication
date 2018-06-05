@@ -1,8 +1,8 @@
 <div class="input-group">
-  <kendo-autocomplete #autocomplete [data]="data" [valueField]="'samAccountName'" [value]="username" [filterable]="true"
-    (valueChange)="select($event)" (open)="open($event)" [placeholder]="'Username'">
+  <kendo-combobox #autocomplete [data]="users" [textField]="'samAccountName'" [valueField]="'loginValue'" [value]="user" [filterable]="true"
+    (valueChange)="valueChange($event)" (open)="open($event)" [placeholder]="'Username'">
     <ng-template kendoAutoCompleteNoDataTemplate>
         <h6><span class="k-icon k-i-warning"></span> No users found.</h6>
     </ng-template>
-  </kendo-autocomplete>
+  </kendo-combobox>
 </div>

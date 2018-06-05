@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ControlCenterSettings } from './../../../services/configuration.models';
+import { ControlCenterSettings, User } from './../../../services/configuration.models';
 import { ConfigurationService } from './../../../services/configuration.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { ConfigurationService } from './../../../services/configuration.service'
 })
 export class ConfigurationCacheComponent implements OnInit {
   cc: ControlCenterSettings;
+  hostServiceUser: User;
 
   constructor(private cfgService: ConfigurationService) { }
 

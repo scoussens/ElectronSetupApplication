@@ -5,10 +5,10 @@
 </div>
 <div class="row mb-2">
   <div class="col">
-    <app-user-picker [(username)]="website.appPoolUser.value"></app-user-picker>
+    <app-user-picker [(user)]="appPoolUser" [(username)]="website.appPoolUser.value"></app-user-picker>
   </div>
   <div class="col">
-    <app-validated-password [username]="website.appPoolUser.value" [(password)]="website.appPoolPassword.value"></app-validated-password>
+    <app-validated-password [user]="appPoolUser" [(password)]="website.appPoolPassword.value"></app-validated-password>
   </div>
 </div>
 <div class="row mb-2">

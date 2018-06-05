@@ -13,10 +13,10 @@
     </div>
   </div>
   <div class="col" *ngIf="!platform.useAppPool.value">
-    <app-user-picker [(username)]="platform.platformUsername.value"></app-user-picker>
+    <app-user-picker [(user)]="platformUser" [(username)]="platform.platformUsername.value"></app-user-picker>
   </div>
   <div class="col" *ngIf="!platform.useAppPool.value">
-    <app-validated-password [username]="platform.platformUsername.value" [(password)]="platform.platformPassword.value"></app-validated-password>
+    <app-validated-password [user]="platformUser" [(password)]="platform.platformPassword.value"></app-validated-password>
   </div>
 </div>
 <div class="row mb-2">
@@ -35,16 +35,19 @@
   </div>
 
   <div class="col" *ngIf="!platform.rmUsePlatformAccount.value">
-    <app-user-picker [(username)]="platform.rmUsername.value"></app-user-picker>
+    <app-user-picker [(user)]="rmUser" [(username)]="platform.rmUsername.value"></app-user-picker>
   </div>
   <div class="col" *ngIf="!platform.rmUsePlatformAccount.value">
-    <app-validated-password [username]="platform.rmUsername.value" [(password)]="platform.rmPassword.value"></app-validated-password>
+    <app-validated-password [user]="rmUser" [(password)]="platform.rmPassword.value"></app-validated-password>
   </div>
 
 </div>
 <div class="row mb-2">
   <div class="col">
     <h6>Active Directory Service Account</h6>
+  </div>
+  <div class="col">
+    <h6>Configuration Manager Service Account</h6>
   </div>
 </div>
 <div class="row mb-2">
@@ -56,26 +59,6 @@
       <kendo-switch [(ngModel)]="platform.adUsePlatformAccount.value" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
     </div>
   </div>
-  <div class="col" *ngIf="!platform.adUsePlatformAccount.value">
-    <app-user-picker [(username)]="platform.adUsername.value"></app-user-picker>
-  </div>
-  <div class="col" *ngIf="!platform.adUsePlatformAccount.value">
-    <app-validated-password [username]="platform.adUsername.value" [(password)]="platform.adPassword.value"></app-validated-password>
-  </div>
-</div>
-<div class="row mb-2">
-  <div class="col">
-    <kendo-textbox-container floatingLabel="Search Root">
-      <input kendoTextBox [(ngModel)]="platform.adRoot.value" />
-    </kendo-textbox-container>
-  </div>
-</div>
-<div class="row mb-2">
-  <div class="col">
-    <h6>Configuration Manager Service Account</h6>
-  </div>
-</div>
-<div class="row mb-2">
   <div class="col">
     <div>
       <small>Use Platform Account</small>
@@ -84,13 +67,28 @@
       <kendo-switch [(ngModel)]="platform.cmUsePlatformAccount.value" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
     </div>
   </div>
-
-  <div class="col" *ngIf="!platform.cmUsePlatformAccount.value">
-    <app-user-picker [(username)]="platform.cmUsername.value"></app-user-picker>
+</div>
+<div class="row">
+  <div class="col" *ngIf="!platform.adUsePlatformAccount.value">
+    <app-user-picker [(user)]="adUser" [(username)]="platform.adUsername.value"></app-user-picker>
   </div>
   <div class="col" *ngIf="!platform.cmUsePlatformAccount.value">
-    <app-validated-password [username]="platform.cmUsername.value" [(password)]="platform.cmPassword.value"></app-validated-password>
+    <app-user-picker [(user)]="cmUser" [(username)]="platform.cmUsername.value"></app-user-picker>
   </div>
-
+</div>
+<div class="row">
+  <div class="col" *ngIf="!platform.adUsePlatformAccount.value">
+    <app-validated-password [user]="adUser" [(password)]="platform.adPassword.value"></app-validated-password>
+  </div>
+  <div class="col" *ngIf="!platform.cmUsePlatformAccount.value">
+    <app-validated-password [user]="cmUser" [(password)]="platform.cmPassword.value"></app-validated-password>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <kendo-textbox-container floatingLabel="Search Root">
+      <input kendoTextBox [(ngModel)]="platform.adRoot.value" />
+    </kendo-textbox-container>
+  </div>
 </div>
 

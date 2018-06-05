@@ -333,7 +333,7 @@ export class ConfigurationService {
   }
 
   installPrereqs() {
-
+    return this.ps.stream<string>(PsCommandType.Script, 'Install-Prereqs.ps1', []);
   }
 
   installPortal() {
@@ -359,7 +359,7 @@ export class ConfigurationService {
       let settingParams = this.buildParamaterArrayFromObject(settingGroup);
       params = params.concat(settingParams)
     });
-    
+
     let allParams = params.concat(defaultParams)
     return this.ps.stream<string>(PsCommandType.Script, 'Install-Portal.ps1', allParams);
   }

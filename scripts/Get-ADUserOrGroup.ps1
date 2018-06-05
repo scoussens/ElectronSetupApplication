@@ -10,10 +10,12 @@ $output = @{
     output = @()
 }
 
-$adsi = [adsisearcher]"";
-$adsi.Filter = "(&(objectClass=$objectClass)(sAMAccountName=$samAccountName))";
+$adsi = [ADSI]"";
 
-$users = $adsi.FindAll()
+$adsiSearcher = [adsisearcher]"";
+$adsiSearcher.Filter = "(&(objectClass=$objectClass)(sAMAccountName=$samAccountName))";
+
+$users = $adsiSearcher.FindAll()
 $output.message = "success";
 
 foreach($user in $users) {
@@ -21,8 +23,10 @@ foreach($user in $users) {
         cn = ($user.Properties['cn'])
         displayName = ($user.Properties['displayname'])
         samAccountName = ($user.Properties['samaccountname'])
-        userPrincipalName= ($user.Properties['userprincipalname'])
-        searchRoot = ($adsi.SearchRoot.Path)
+        userPrincipalName = ($user.Properties['userprincipalname'])
+        domain = ($adsi.name)
+        loginValue = "$($adsi.name)\$($user.Properties['samaccountname'])"
+        searchRoot = ($adsiSearcher.SearchRoot.Path)
     }
 }
 

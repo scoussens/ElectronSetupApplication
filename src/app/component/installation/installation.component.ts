@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavLink } from '../../services/nav.service';
 import { ConfigurationService } from './../../services/configuration.service';
 import { NavService } from './../../services/nav.service';
 
@@ -10,14 +9,25 @@ import { NavService } from './../../services/nav.service';
   styleUrls: ['./installation.component.scss']
 })
 export class InstallationComponent implements OnInit {
-  linkNext: NavLink = null;
-  linkPrev: NavLink = null;
   title = 'Configuration';
   messages: string[] = [];
 
   constructor(private cfgService: ConfigurationService, private router: Router, private navService: NavService) {}
 
   ngOnInit() {
+    this.navService.setBottomLinks(null, null);
+  }
+
+  runPrereq() {
+    this.cfgService.saveConfig();
+
+    this.cfgService
+      .installPrereqs()
+      .subscribe(
+        data => this.messages.push(data.output),
+        err => console.log(err),
+        () => console.log('Pre-req installation complete, you may need to restart the server.')
+      )
   }
 
   runInstall() {
@@ -34,7 +44,7 @@ export class InstallationComponent implements OnInit {
         },
         () => {
           console.log('Installation completed.')
-          this.navService.enableParent('Complete');
+          this.navService.enableTopLink('Complete');
           this.router.navigate(['complete']);
         }
       );

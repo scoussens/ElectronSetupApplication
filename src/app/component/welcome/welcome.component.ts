@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import "rxjs/operators/take";
-import { NavLink, NavService } from "../../services/nav.service";
+import { NavService } from "../../services/nav.service";
 
 @Component({
   selector: "app-welcome",
@@ -8,15 +8,12 @@ import { NavLink, NavService } from "../../services/nav.service";
   styleUrls: ["./welcome.component.scss"]
 })
 export class WelcomeComponent implements OnInit {
-  linkNext: NavLink = null;
-  linkPrev: NavLink = null;
   welcomeMessage = "Welcome";
   productTitle = "Cireson Control Center Setup";
 
   constructor(private navService: NavService) {}
 
   ngOnInit() {
-    this.linkNext = this.navService.getLink('License');
+    this.navService.setBottomLinks(null, 'License', null, 'Let\'s get started!')
   }
-
 }

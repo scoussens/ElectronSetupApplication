@@ -1,10 +1,10 @@
 <nav class="navbar fixed-bottom navbar-light bg-light">
   <ul class="nav mx-auto">
-    <li class="nav-item" *ngIf="linkPrev">
-      <a class="nav-link" [routerLink]="linkPrev.route">{{linkPrevText || linkPrev.name}}</a>
+    <li class="nav-item" *ngIf="prevLink">
+      <a class="nav-link" [routerLink]="prevLink.route">{{prevLink.name}}</a>
     </li>
-    <li class="nav-item" *ngIf="linkNext">
-      <a class="nav-link" [routerLink]="linkNext.route" (click)="enableLink(linkNext.name)">{{linkNextText || linkNext.name}}</a>
+    <li class="nav-item" *ngIf="nextLink">
+      <a class="nav-link" [routerLink]="nextLink.route" (click)="enableNextRoute()">{{nextLink.name}}</a>
     </li>
   </ul>
 </nav>

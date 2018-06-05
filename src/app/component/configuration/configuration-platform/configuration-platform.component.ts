@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigurationService } from '../../../services/configuration.service';
-import { PlatformSettings } from './../../../services/configuration.models';
+import { PlatformSettings, User } from './../../../services/configuration.models';
 
 @Component({
   selector: 'app-configuration-platform',
@@ -9,6 +9,10 @@ import { PlatformSettings } from './../../../services/configuration.models';
 })
 export class ConfigurationPlatformComponent implements OnInit {
   platform: PlatformSettings;
+  platformUser: User;
+  rmUser: User;
+  adUser: User;
+  cmUser: User;
 
   constructor(private configService: ConfigurationService) { }
 

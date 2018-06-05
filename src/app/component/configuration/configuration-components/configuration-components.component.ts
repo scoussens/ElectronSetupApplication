@@ -16,4 +16,15 @@ export class ConfigurationComponentsComponent implements OnInit {
     this.components = this.configService.settings.components;
   }
 
+  setAllTrue(event) {
+    if(event === false) {
+      return;
+    }
+
+    this.components.installDb.value = true;
+    this.components.installMdt.value = true;
+    this.components.installServices.value = true;
+    this.components.installSsrs.value = true;
+    this.components.installWebsite.value = true;
+  }
 }

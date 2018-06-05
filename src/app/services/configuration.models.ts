@@ -1,14 +1,18 @@
 import { ConfigMgrSettings, WebsiteSettings } from './configuration.models';
 export interface User {
-    cn: string,
-    displayName: string,
+    cn: string
+    displayName: string
     samAccountName: string
+    domain: string
+    loginValue: string
 }
 
 export interface Group {
-    cn: string,
-    displayName: string,
+    cn: string
+    displayName: string
     samAccountName: string
+    domain: string
+    loginValue: string
 }
 
 export interface SettingGroup {

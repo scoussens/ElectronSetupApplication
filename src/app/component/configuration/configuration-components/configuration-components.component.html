@@ -3,7 +3,7 @@
     <label>Install All Components</label>
   </div>
   <div class="col">
-    <kendo-switch [(ngModel)]="components.installAll.value" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
+    <kendo-switch (valueChange)="setAllTrue($event)" [(ngModel)]="components.installAll.value" [onLabel]="'Yes'" [offLabel]="'No'"></kendo-switch>
   </div>
 </div>
 <div *ngIf="!components.installAll.value">

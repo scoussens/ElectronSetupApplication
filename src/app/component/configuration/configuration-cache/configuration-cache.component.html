@@ -13,10 +13,10 @@
     </div>
   </div>
   <div class="col" *ngIf="!cc.hostServiceLocalSystem.value">
-    <app-user-picker [(username)]="cc.hostServiceUsername.value"></app-user-picker>
+    <app-user-picker [(user)]="hostServiceUser" [(username)]="cc.hostServiceUsername.value"></app-user-picker>
   </div>
   <div class="col" *ngIf="!cc.hostServiceLocalSystem.value">
-    <app-validated-password [username]="cc.hostServiceUsername.value" [(password)]="cc.hostServicePassword.value"></app-validated-password>
+    <app-validated-password [user]="hostServiceUser" [(password)]="cc.hostServicePassword.value"></app-validated-password>
   </div>
 </div>
 <div class="row">

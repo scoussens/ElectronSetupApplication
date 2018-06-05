@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NavLink, NavService } from './../../services/nav.service';
+import { Component, OnInit } from '@angular/core';
+import { NavLink } from '../../services/nav.models';
+import { NavService } from './../../services/nav.service';
 
 @Component({
   selector: 'app-nav-bottom',
@@ -7,17 +8,22 @@ import { NavLink, NavService } from './../../services/nav.service';
   styleUrls: ['./nav-bottom.component.scss']
 })
 export class NavBottomComponent implements OnInit {
-  @Input() linkPrev: NavLink = null;
-  @Input() linkPrevText: string = null;
-  @Input() linkNext: NavLink = null;
-  @Input() linkNextText: string = null;
+  prevLink: NavLink;
+  nextLink: NavLink;
   
   constructor(private navService: NavService) { }
 
   ngOnInit() {
+    this.navService.bottomNavLinks$.subscribe(
+      navLinks => {
+        this.prevLink = navLinks.prev;
+        this.nextLink = navLinks.next;
+      },
+      err => console.log(err),
+      () => console.log('Navigation completed.'));
   }
 
-  enableLink(name: string) {
-    this.navService.enableParent(name);
+  enableNextRoute() {
+    this.navService.enableTopLink(this.nextLink.name);
   }
 }

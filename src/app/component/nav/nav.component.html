@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
   <a class="navbar-brand" href="#">
     <img src="assets/cmp-icon.png" width="30" height="30" alt="" style="border-radius: .25rem">
   </a>
   <ul class="navbar-nav">
     <li *ngFor="let link of navLinks" class="nav-item" routerLinkActive="active">
-      <a *ngIf="link.enabled" class="nav-link" routerLink="/{{link.route}}">{{link.name}}</a>
+      <a *ngIf="link.enabled.top" class="nav-link" routerLink="/{{link.route}}">{{link.name}}</a>
     </li>
   </ul>
 </nav>
