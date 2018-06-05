@@ -7,6 +7,7 @@ import { PowershellService } from './powershell.service';
   providedIn: 'root'
 })
 export class ConfigurationService {
+  defaultVersion = '3.1.2';
   settings: ConfigurationSettings = {
     version: '0.0.1',
     components: {
@@ -336,7 +337,7 @@ export class ConfigurationService {
     return this.ps.stream<string>(PsCommandType.Script, 'Install-Prereqs.ps1', []);
   }
 
-  installPortal() {
+  installPortal(packageVersion?: string) {
     // for future use to configure default parameters
     let defaultParams: PsParameter[] = [
       // { ApplicationTitle: "Control Center" },
@@ -361,7 +362,7 @@ export class ConfigurationService {
     });
 
     let allParams = params.concat(defaultParams)
-    return this.ps.stream<string>(PsCommandType.Script, 'Install-Portal.ps1', allParams);
+    return this.ps.stream<string>(PsCommandType.Command, `.\\installPackages\\${packageVersion || this.defaultVersion}\\InstallCMPortal.ps1`, allParams);
   }
 
   // builds a paramater array, removing any properties that are null or empty

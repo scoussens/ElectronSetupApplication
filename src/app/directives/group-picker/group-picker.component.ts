@@ -34,7 +34,7 @@ export class GroupPickerComponent implements OnInit {
     //Add 'implements AfterViewInit' to the class.
     // parse the existing value if it exsits and pull the user value
     this.cfgService
-      .findAdGroups(this.groupname.split('\\')[1] || null)
+      .findAdGroups(this.groupname ? this.groupname.split('\\')[1] : null)
       .do(() => this.autocomplete.loading = true)
       .subscribe(
         groups => {

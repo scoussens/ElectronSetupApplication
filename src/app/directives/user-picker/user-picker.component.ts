@@ -45,7 +45,7 @@ export class UserPickerComponent implements OnInit {
 
     // parse the existing value if it exsits and pull the user value
     this.cfgService
-      .findAdUsers(this.username.split('\\')[1] || null)
+      .findAdUsers(this.username ? this.username.split('\\')[1] : null)
       .do(() => this.autocomplete.loading = true)
       .subscribe(
         users => {

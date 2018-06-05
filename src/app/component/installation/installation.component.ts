@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfigurationService } from './../../services/configuration.service';
 import { NavService } from './../../services/nav.service';
@@ -9,13 +9,22 @@ import { NavService } from './../../services/nav.service';
   styleUrls: ['./installation.component.scss']
 })
 export class InstallationComponent implements OnInit {
-  title = 'Configuration';
-  messages: string[] = [];
+  @ViewChild('logViewer') private logViewerContainer: ElementRef;
+  title = 'Install Control Center';
+  messages: string = '';
 
   constructor(private cfgService: ConfigurationService, private router: Router, private navService: NavService) {}
 
   ngOnInit() {
     this.navService.setBottomLinks(null, null);
+  }
+
+  scrollToBottom() {
+    try {
+      this.logViewerContainer.nativeElement.scrollTop = this.logViewerContainer.nativeElement.scrollHeight;
+    } catch(err) {
+      console.log(err);
+    }
   }
 
   runPrereq() {
@@ -24,7 +33,10 @@ export class InstallationComponent implements OnInit {
     this.cfgService
       .installPrereqs()
       .subscribe(
-        data => this.messages.push(data.output),
+        data => {
+          this.messages += data.output;
+          this.scrollToBottom();
+        },
         err => console.log(err),
         () => console.log('Pre-req installation complete, you may need to restart the server.')
       )
@@ -38,10 +50,11 @@ export class InstallationComponent implements OnInit {
     this.cfgService
       .installPortal()
       .subscribe(
-        data => this.messages.push(data.output),
-        err => {
-          console.log(err);
+        data => {
+          this.messages += data.output;
+          this.scrollToBottom();
         },
+        err => this.messages += err.output,
         () => {
           console.log('Installation completed.')
           this.navService.enableTopLink('Complete');
